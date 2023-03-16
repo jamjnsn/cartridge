@@ -1,6 +1,8 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 
+import asyncHandler from 'express-async-handler'
+
 import getApiRoutes from './utils/getApiRoutes'
 import getServerMiddleware, { Middleware, MiddlewareHandler } from './utils/getMiddleware'
 
@@ -26,7 +28,7 @@ const makeApp = async () => {
 			handlers.push(middlewareHandler)
 		})
 
-		app[method](`/api${route.path}`, ...handlers, route.handler)
+		app[method](`/api${route.path}`, ...handlers, asyncHandler(route.handler))
 	}
 
 	return app
