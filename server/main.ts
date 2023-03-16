@@ -1,6 +1,9 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 
+import getApiRoutes from './utils/getApiRoutes'
+import getServerMiddleware, { Middleware, MiddlewareHandler } from './utils/getMiddleware'
+
 const makeApp = async () => {
 	const app = express()
 
@@ -8,6 +11,23 @@ const makeApp = async () => {
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(bodyParser.json())
 	app.use(bodyParser.raw())
+
+	// Get middleware
+	const middleware: Middleware = await getServerMiddleware()
+
+	// Get API routes
+	const apiRoutes = await getApiRoutes()
+	for (const route of apiRoutes) {
+		const method = route.method as 'get' | 'post' | 'put' | 'patch' | 'delete'
+		const handlers: MiddlewareHandler[] = []
+
+		route.middleware?.forEach((middlewareName) => {
+			let middlewareHandler = middleware[middlewareName]
+			handlers.push(middlewareHandler)
+		})
+
+		app[method](`/api${route.path}`, ...handlers, route.handler)
+	}
 
 	return app
 }
