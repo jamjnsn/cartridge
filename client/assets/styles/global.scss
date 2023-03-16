@@ -1,0 +1,12 @@
+$primary: hsl(246, 97%, 66%);
+$secondary: hsl(271, 100%, 71%);
+
+$fancy-gradient: linear-gradient(
+	25deg,
+	rgba(102, 86, 252, 1) 0%,
+	rgba(102, 86, 252, 1) 10%,
+	rgba(147, 86, 252, 1) 50%,
+	rgba(204, 84, 247, 1) 100%
+);
+
+@import 'bulma/sass/utilities/_all.sass';

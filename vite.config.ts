@@ -17,5 +17,12 @@ export default defineConfig({
 				changeOrigin: true
 			}
 		}
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: `@import "@/client/assets/styles/global.scss";`
+			}
+		}
 	}
 })
