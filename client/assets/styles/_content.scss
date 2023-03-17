@@ -1,0 +1,24 @@
+.content {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: $alt-font;
+		font-weight: bold;
+	}
+
+	h1 {
+		@extend .title;
+	}
+
+	h2 {
+		@extend .heading;
+	}
+
+	h3 {
+		font-size: 1.2em;
+		color: $grey-lightest;
+	}
+}

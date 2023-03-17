@@ -16,18 +16,18 @@ $grey-lightest: hsl(0, 0%, 93%);
 
 $orange: hsl(14, 100%, 53%);
 $yellow: hsl(44, 100%, 77%);
-$green: hsl(153, 53%, 53%);
+$green: hsl(153, 53%, 43%);
 $turquoise: hsl(171, 100%, 41%);
 $cyan: hsl(207, 61%, 53%);
 $blue: hsl(229, 53%, 53%);
 $purple: hsl(271, 100%, 71%);
-$red: hsl(348, 86%, 61%);
+$red: hsl(348, 86%, 57%);
 
 $primary: hsl(246, 97%, 66%);
 $secondary: hsl(271, 100%, 71%);
 
-$danger: $red;
-$success: $green;
+$bad: $red;
+$good: $green;
 $warning: $yellow;
 $info: $blue;
 
@@ -44,7 +44,8 @@ $fancy-gradient: linear-gradient(
 	rgba(204, 84, 247, 1) 100%
 );
 
-$main-font: 'Lato', 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans',
-	'Trebuchet MS', Verdana, 'Verdana Ref', sans-serif;
+$main-font: 'Poppins', 'Lato', 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans',
+	'Bitstream Vera Sans', 'Trebuchet MS', Verdana, 'Verdana Ref', sans-serif;
+$alt-font: 'Poppins', $main-font;
 
 $monospace-font: monospace;

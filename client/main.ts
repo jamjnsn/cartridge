@@ -5,6 +5,7 @@ import router from './router'
 import InlineSvg from 'vue-inline-svg'
 
 import './assets/styles/main.scss'
+import '@fontsource/poppins'
 
 const app = createApp(App)
 

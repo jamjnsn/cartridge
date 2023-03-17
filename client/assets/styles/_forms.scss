@@ -1,4 +1,5 @@
 input {
+	display: block;
 	font-size: 1rem;
 	outline: 0.1em solid transparent;
 	border: 0;
@@ -8,9 +9,31 @@ input {
 	background-color: $black-lighter;
 	transition: all 0.1s ease;
 
+	&.is-full-wdith {
+		width: 100%;
+	}
+
 	&:focus {
 		outline-color: $primary;
 		color: $white;
 		background-color: $black-lighter;
+	}
+}
+
+label {
+	display: block;
+	font-size: 0.9em;
+	margin-bottom: 0.2em;
+	text-transform: uppercase;
+	color: $grey-light;
+	padding-left: 0.4em;
+}
+
+.field {
+	display: block;
+	width: 100%;
+
+	&:not(:last-child) {
+		margin-bottom: 1rem;
 	}
 }

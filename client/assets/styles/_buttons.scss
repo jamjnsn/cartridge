@@ -1,0 +1,69 @@
+.button {
+	display: inline-flex;
+	align-items: center;
+	background-color: $grey-dark;
+	border-radius: 0.3em;
+	padding: calc(0.75em - 1px) calc(1em - 1px);
+	cursor: pointer;
+	transition: all 0.1s ease;
+
+	& > *:not(:last-child),
+	& > .ui-icon {
+		margin-right: 0.25rem;
+	}
+
+	&:hover {
+		background-color: lighten($grey-dark, 3%);
+	}
+
+	&.is-primary {
+		background-color: $primary;
+
+		&:hover {
+			background-color: lighten($primary, 3%);
+		}
+	}
+
+	&.is-ghost {
+		background-color: transparent;
+
+		&:hover {
+			background-color: $black-lighter;
+		}
+	}
+
+	&.is-bad {
+		background-color: $bad;
+
+		&:hover {
+			background-color: lighten($bad, 3%);
+		}
+	}
+
+	&.is-good {
+		background-color: $good;
+
+		&:hover {
+			background-color: lighten($good, 3%);
+		}
+	}
+
+	&.is-full-width {
+		display: flex;
+		width: 100%;
+	}
+
+	&.is-centered {
+		justify-content: center;
+	}
+}
+
+.buttons {
+	display: flex;
+
+	& > .button {
+		&:not(:last-child) {
+			margin-right: 0.5rem;
+		}
+	}
+}
