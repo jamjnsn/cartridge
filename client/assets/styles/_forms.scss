@@ -1,0 +1,16 @@
+input {
+	font-size: 1rem;
+	outline: 0.1em solid transparent;
+	border: 0;
+	border-radius: 0.15em;
+	padding: calc(0.5em - 1px) calc(0.75em - 1px);
+	color: $grey-lighter;
+	background-color: $black-lighter;
+	transition: all 0.1s ease;
+
+	&:focus {
+		outline-color: $primary;
+		color: $white;
+		background-color: $black-lighter;
+	}
+}

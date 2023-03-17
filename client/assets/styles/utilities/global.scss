@@ -1,0 +1,50 @@
+$white: hsl(0, 0%, 99%);
+$white-dark: hsl(0, 0%, 98%);
+$white-darker: hsl(0, 0%, 96%);
+
+$black: hsl(0, 0%, 4%);
+$black-light: hsl(0, 0%, 7%);
+$black-lighter: hsl(0, 0%, 14%);
+
+$grey-darkest: hsl(0, 0%, 13%);
+$grey-darker: hsl(0, 0%, 21%);
+$grey-dark: hsl(0, 0%, 29%);
+$grey: hsl(0, 0%, 48%);
+$grey-light: hsl(0, 0%, 71%);
+$grey-lighter: hsl(0, 0%, 86%);
+$grey-lightest: hsl(0, 0%, 93%);
+
+$orange: hsl(14, 100%, 53%);
+$yellow: hsl(44, 100%, 77%);
+$green: hsl(153, 53%, 53%);
+$turquoise: hsl(171, 100%, 41%);
+$cyan: hsl(207, 61%, 53%);
+$blue: hsl(229, 53%, 53%);
+$purple: hsl(271, 100%, 71%);
+$red: hsl(348, 86%, 61%);
+
+$primary: hsl(246, 97%, 66%);
+$secondary: hsl(271, 100%, 71%);
+
+$danger: $red;
+$success: $green;
+$warning: $yellow;
+$info: $blue;
+
+$link-color: $blue;
+
+$main-background: $black-lighter;
+$main-foreground: $white;
+
+$fancy-gradient: linear-gradient(
+	25deg,
+	rgba(102, 86, 252, 1) 0%,
+	rgba(102, 86, 252, 1) 10%,
+	rgba(147, 86, 252, 1) 50%,
+	rgba(204, 84, 247, 1) 100%
+);
+
+$main-font: 'Lato', 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans',
+	'Trebuchet MS', Verdana, 'Verdana Ref', sans-serif;
+
+$monospace-font: monospace;

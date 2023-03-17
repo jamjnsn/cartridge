@@ -7,7 +7,7 @@ export default defineConfig({
 	plugins: [vue()],
 	resolve: {
 		alias: {
-			'@': path.resolve(__dirname)
+			'@': path.resolve(path.join(__dirname, 'client'))
 		}
 	},
 	server: {
@@ -21,7 +21,7 @@ export default defineConfig({
 	css: {
 		preprocessorOptions: {
 			scss: {
-				additionalData: `@import "@/client/assets/styles/global.scss";`
+				additionalData: `@import "@/assets/styles/utilities/global.scss";`
 			}
 		}
 	}

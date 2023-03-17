@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "concurrently npm:dev-client npm:dev-server",
 		"dev-client": "vite",
-		"dev-server": "nodemon server/main.ts",
+		"dev-server": "nodemon server/main.ts -w server",
 		"build": "run-p type-check build-only",
 		"preview": "vite preview",
 		"build-only": "vite build",
@@ -20,7 +20,6 @@
 		"@prisma/client": "4.11.0",
 		"bcrypt": "^5.1.0",
 		"body-parser": "^1.20.2",
-		"bulma": "^0.9.4",
 		"express": "^4.18.2",
 		"express-async-handler": "^1.2.0",
 		"glob": "^9.3.0",
@@ -48,6 +47,7 @@
 		"ts-node": "^10.9.1",
 		"typescript": "~4.8.4",
 		"vite": "^4.1.4",
+		"vue-inline-svg": "^3.1.2",
 		"vue-tsc": "^1.2.0"
 	}
 }
