@@ -7,13 +7,23 @@
 				</router-link>
 			</div>
 
-			<div class="search-container">
+			<div
+				class="search-container"
+				@click="searchInput?.focus()"
+				:class="{ 'is-active': searchInputFocused }"
+			>
+				<div class="slash-icon">
+					<inline-svg :src="slash" />
+				</div>
+
 				<input
 					class="search-input"
 					v-model="searchQuery"
 					type="text"
 					ref="searchInput"
 					placeholder="Search..."
+					@focus="searchInputFocused = true"
+					@blur="searchInputFocused = false"
 				/>
 			</div>
 
@@ -24,13 +34,13 @@
 
 				<div class="menu" v-if="menuIsOpen">
 					<div class="menu-item">
-						<router-link to="/logout">Logout</router-link>
+						<router-link to="/logout"><feather-icon type="log-out" /> Logout</router-link>
 					</div>
 				</div>
 			</div>
 		</nav>
 
-		<main>...</main>
+		<main></main>
 	</div>
 </template>
 
@@ -41,9 +51,11 @@ import { RouterLink } from 'vue-router'
 import MenuIcon from '../components/MenuIcon.vue'
 
 import logo from '../assets/images/logo.svg'
+import slash from '../assets/images/icons/slash.svg'
 
 const searchInput = ref<HTMLInputElement | null>(null)
 
+const searchInputFocused = ref(false)
 const menuIsOpen = ref(false)
 const searchQuery = ''
 
@@ -51,19 +63,30 @@ const toggleMenu = () => {
 	menuIsOpen.value = !menuIsOpen.value
 }
 
-const onKeyPress = (e: any) => {
+const onKeyDown = (e: any) => {
 	if (e.key === '/') {
 		e.preventDefault()
 		searchInput.value?.focus()
 	}
+
+	switch (e.key) {
+		case '/':
+			e.preventDefault()
+			searchInput.value?.focus()
+			break
+		case 'Escape':
+			e.preventDefault()
+			searchInput.value?.blur()
+			break
+	}
 }
 
 onMounted(() => {
-	window.addEventListener('keypress', onKeyPress)
+	window.addEventListener('keydown', onKeyDown)
 })
 
 onUnmounted(() => {
-	window.removeEventListener('keypress', onKeyPress)
+	window.removeEventListener('keydown', onKeyDown)
 })
 </script>
 
@@ -83,7 +106,7 @@ nav {
 	display: flex;
 	align-items: center;
 	padding: 1rem 2rem;
-	background-color: $black-light;
+	background-color: lighten($black-light, 2%);
 	height: $menu-height;
 
 	z-index: 10;
@@ -125,20 +148,32 @@ nav {
 
 	.search-container {
 		flex: 1 1 auto;
+		border-radius: 0.25em;
+		outline: 0.1em solid transparent;
+		transition: all 0.1s ease;
+		background-color: $black-lighter;
+		padding: 0.75em 1em;
+
+		&.is-active {
+			outline-color: $primary;
+			box-shadow: 0 0.05em 1em $primary;
+			outline-color: $secondary;
+			transform: scale(1.005);
+		}
+
+		.slash-icon {
+			color: $grey-light;
+			width: 15px;
+			height: 15px;
+		}
 
 		.search-input {
-			position: static;
-			z-index: 15;
 			display: block;
 			width: 100%;
-			padding: 0.75em 1em;
-			border-radius: 0.25em;
-			outline-width: 0.1em;
+			outline: 0;
+			background: transparent;
 
 			&:focus {
-				box-shadow: 0 0.05em 1em $primary;
-				outline-color: $secondary;
-				transform: scale(1.005);
 			}
 		}
 	}
@@ -181,21 +216,28 @@ nav {
 			padding: 0.5rem;
 
 			.menu-item {
+				display: flex;
+				align-items: center;
+
 				background-color: rgba(0, 0, 0, 0.1);
 				border-radius: 0.15em;
 
 				transition: all 0.1s ease;
 
 				&:hover {
-					box-shadow: 0.1em 0.1em 0 rgba(0, 0, 0, 0.2);
-					transform: translate(-0.1em, -0.1em);
+					box-shadow: 0 0.1em 0 rgba(0, 0, 0, 0.2);
 				}
 
 				a {
-					display: block;
+					display: flex;
+					align-items: center;
 					width: 100%;
 					height: 100%;
 					padding: 0.75rem;
+				}
+
+				.ui-icon {
+					margin-right: 0.5em;
 				}
 			}
 		}

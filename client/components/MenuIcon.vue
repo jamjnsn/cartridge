@@ -44,8 +44,8 @@ $bar-spacing: 3px;
 		border-radius: 12px;
 		opacity: 1;
 		left: 0;
-		transform: rotate(0deg);
-		transition: transform 0.25s ease-in-out;
+		transform: rotate(0deg) scale(1);
+		transition: all 0.25s ease-in-out;
 
 		& > div {
 			position: absolute;
@@ -84,9 +84,7 @@ $bar-spacing: 3px;
 	}
 
 	span:nth-child(1) {
-		top: 18px;
-		width: 0%;
-		left: 50%;
+		transform: scale(0);
 	}
 
 	span:nth-child(2) {
@@ -98,9 +96,7 @@ $bar-spacing: 3px;
 	}
 
 	span:nth-child(4) {
-		top: 18px;
-		width: 0%;
-		left: 50%;
+		transform: scale(0);
 	}
 }
 </style>

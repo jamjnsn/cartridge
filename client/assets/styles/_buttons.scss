@@ -5,6 +5,7 @@
 	border-radius: 0.3em;
 	padding: calc(0.75em - 1px) calc(1em - 1px);
 	cursor: pointer;
+	box-shadow: none;
 	transition: all 0.1s ease;
 
 	& > *:not(:last-child),
@@ -13,7 +14,7 @@
 	}
 
 	&:hover {
-		background-color: lighten($grey-dark, 3%);
+		background-color: lighten($grey-dark, 4%);
 	}
 
 	&.is-primary {
