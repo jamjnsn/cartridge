@@ -4,8 +4,19 @@
 @import 'base';
 
 @import 'layout';
+@import 'alert';
 @import 'forms';
 @import 'buttons';
 @import 'typography';
 
 @import 'content';
+
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.25s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
+}

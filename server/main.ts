@@ -6,6 +6,9 @@ import asyncHandler from 'express-async-handler'
 import getApiRoutes from './utils/getApiRoutes'
 import getServerMiddleware, { Middleware, MiddlewareHandler } from './utils/getMiddleware'
 
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 const makeApp = async () => {
 	const app = express()
 

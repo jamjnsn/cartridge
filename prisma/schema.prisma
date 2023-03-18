@@ -19,7 +19,7 @@ model User {
 
 model Session {
     id         String   @id @default(cuid())
-    token      String   @unique @map("token")
+    token      String   @unique
     expiryDate DateTime @map("expiry_date")
 
     userId String @map("user_id")

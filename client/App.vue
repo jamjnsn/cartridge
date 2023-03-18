@@ -5,29 +5,3 @@ import { RouterView } from 'vue-router'
 <template>
 	<RouterView />
 </template>
-
-<style lang="scss">
-::selection {
-	background: $primary;
-	color: $white;
-}
-
-* {
-	box-sizing: border-box;
-	position: relative;
-	margin: 0;
-	padding: 0;
-}
-
-html {
-	height: 100%;
-}
-
-body {
-	min-height: 100%;
-	font-family: $main-font;
-	color: $white;
-	background-color: $black;
-	line-height: 1;
-}
-</style>

@@ -19,6 +19,10 @@ input {
 		color: $white;
 		background-color: $black-lighter;
 	}
+
+	&:disabled {
+		background-color: $black;
+	}
 }
 
 label {

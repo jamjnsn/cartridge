@@ -30,6 +30,7 @@
 	.panel-body {
 		border-radius: $border-radius;
 		background-color: $black-light;
+		overflow: hidden;
 
 		&:last-child {
 			border-radius: 0 0 $border-radius $border-radius;
