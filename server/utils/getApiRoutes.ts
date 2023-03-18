@@ -20,7 +20,7 @@ export default async function getApiRoutes(): Promise<Route[]> {
 	for (const routeFile of routeFiles) {
 		const relativePath = routeFile.replace(routesPath, '')
 
-		let pathSegments = relativePath.split('/')
+		const pathSegments = relativePath.split('/')
 
 		let filename = pathSegments.pop()
 

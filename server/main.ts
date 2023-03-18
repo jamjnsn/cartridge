@@ -27,7 +27,7 @@ const makeApp = async () => {
 		const handlers: MiddlewareHandler[] = []
 
 		route.middleware?.forEach((middlewareName) => {
-			let middlewareHandler = middleware[middlewareName]
+			const middlewareHandler = middleware[middlewareName]
 			handlers.push(middlewareHandler)
 		})
 
