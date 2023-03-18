@@ -7,6 +7,7 @@
 	cursor: pointer;
 	box-shadow: none;
 	transition: all 0.1s ease;
+	color: inherit;
 
 	& > *:not(:last-child),
 	& > .ui-icon {

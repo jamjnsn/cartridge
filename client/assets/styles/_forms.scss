@@ -8,8 +8,9 @@ input {
 	color: $grey-lighter;
 	background-color: $black-lighter;
 	transition: all 0.1s ease;
+	max-width: 100%;
 
-	&.is-full-wdith {
+	&.is-full-width {
 		width: 100%;
 	}
 
@@ -21,12 +22,17 @@ input {
 }
 
 label {
-	display: block;
+	display: flex;
+	align-items: center;
 	font-size: 0.9em;
-	margin-bottom: 0.2em;
+	margin-bottom: 0.25em;
 	text-transform: uppercase;
 	color: $grey-light;
 	padding-left: 0.4em;
+
+	.ui-icon:first-child {
+		margin-right: 0.25em;
+	}
 }
 
 .field {

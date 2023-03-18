@@ -1,0 +1,38 @@
+.centered-overlay {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+.panel {
+	$border-radius: 0.3rem;
+	width: 100%;
+
+	.panel-header,
+	.panel-body {
+		padding: 1rem;
+	}
+
+	.panel-header {
+		background-color: $primary;
+		font-size: 1.3em;
+
+		&:not(:last-child) {
+			border-radius: $border-radius $border-radius 0 0;
+		}
+	}
+
+	.panel-body {
+		border-radius: $border-radius;
+		background-color: $black-light;
+
+		&:last-child {
+			border-radius: 0 0 $border-radius $border-radius;
+		}
+	}
+}
