@@ -29,6 +29,7 @@
 		"glob": "^9.3.0",
 		"js-cookie": "^3.0.1",
 		"jsonwebtoken": "^9.0.0",
+		"pinia": "^2.0.33",
 		"vue": "^3.2.47",
 		"vue-feather": "^2.0.0",
 		"vue-router": "^4.1.6"

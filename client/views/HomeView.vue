@@ -12,8 +12,8 @@
 				@click="searchInput?.focus()"
 				:class="{ 'is-active': searchInputFocused }"
 			>
-				<div class="slash-icon">
-					<inline-svg :src="slash" />
+				<div class="search-icon">
+					<feather-icon type="search" />
 				</div>
 
 				<input
@@ -161,8 +161,8 @@ nav {
 			transform: scale(1.005);
 		}
 
-		.slash-icon {
-			color: $grey-light;
+		.search-icon {
+			color: $grey-dark;
 			width: 15px;
 			height: 15px;
 		}
