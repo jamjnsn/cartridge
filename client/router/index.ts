@@ -1,9 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
-import getUser from '../middleware/getUser'
-import requireLogin from '../middleware/requireLogin'
-import requireGuest from '../middleware/requireGuest'
+import checkAuth from '../middleware/checkAuth'
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,23 +10,23 @@ const router = createRouter({
 			path: '/',
 			name: 'home',
 			component: HomeView,
-			beforeEnter: requireLogin
+			meta: { requiresLogin: true }
 		},
 		{
 			path: '/login',
 			name: 'login',
 			component: () => import('../views/LoginView.vue'),
-			beforeEnter: requireGuest
+			meta: { requiresGuest: true }
 		},
 		{
 			path: '/logout',
 			name: 'logout',
 			component: () => import('../views/LogoutView.vue'),
-			beforeEnter: requireLogin
+			meta: { requiresLogin: true }
 		}
 	]
 })
 
-router.beforeEach(getUser)
+router.beforeEach(checkAuth)
 
 export default router

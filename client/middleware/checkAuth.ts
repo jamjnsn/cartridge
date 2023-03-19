@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useUserStore } from '../utils/useUserStore'
 import Cookies from 'js-cookie'
 
-export default async function getUser(to: any, from: any) {
+export default async function checkAuth(to: any, from: any) {
 	const user = useUserStore()
 	const token = Cookies.get('token')
 
@@ -21,5 +21,17 @@ export default async function getUser(to: any, from: any) {
 			.catch((e) => {
 				user.username = undefined
 			})
+	}
+
+	if (to.meta.requiresGuest && user.username !== undefined) {
+		return {
+			name: 'home'
+		}
+	}
+
+	if (to.meta.requiresLogin && user.username === undefined) {
+		return {
+			name: 'login'
+		}
 	}
 }
