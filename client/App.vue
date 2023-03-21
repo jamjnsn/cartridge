@@ -81,7 +81,10 @@ onUnmounted(() => {
 				</div>
 			</div>
 		</nav>
-		<RouterView />
+
+		<main>
+			<RouterView />
+		</main>
 	</div>
 </template>
 
@@ -94,6 +97,10 @@ $menu-height: 80px;
 	position: absolute;
 	width: 100vw;
 	height: 100vh;
+}
+
+main {
+	flex: 1 1 auto;
 }
 
 nav {

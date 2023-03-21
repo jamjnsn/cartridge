@@ -10,6 +10,7 @@ import prisma from './server/utils/prisma'
 
 import igdbApi from 'igdb-api-node'
 import path from 'path'
+import { exit } from 'process'
 const igdb = igdbApi(config.twitch.cliendId, config.twitch.appAccessToken)
 
 const apiDelay = 250 // In milliseconds
@@ -65,7 +66,9 @@ const getPlatform = async (slug: string) => {
 }
 
 const getGameCover = async (game: Game) => {
-	const coverFilePath = path.join(config.storageDirectories.covers, `${game.slug}.jpg`)
+	const coverFolder = path.join(config.storagePath, 'games', 'covers')
+	const coverFilePath = path.join(coverFolder, `${game.slug}.jpg`)
+
 	if (fs.existsSync(coverFilePath)) return
 
 	const response = await igdb.fields('*').where(`game = ${game.id}`).request('/covers')
@@ -74,13 +77,14 @@ const getGameCover = async (game: Game) => {
 		const imageId = response.data[0]['image_id']
 		const imageUrl = `https://images.igdb.com/igdb/image/upload/t_cover_big/${imageId}.jpg`
 
-		fs.mkdirSync(config.storageDirectories.covers, { recursive: true })
+		fs.mkdirSync(coverFolder, { recursive: true })
 
 		await downloadFile(imageUrl, coverFilePath)
 	}
 }
 
 const getGame = async (filePath: string, platform: Platform): Promise<Game | null> => {
+	filePath = filePath.replace(config.gamesPath, '')
 	const fileInfo = path.parse(filePath)
 
 	let file = await prisma.file.findUnique({
@@ -94,7 +98,7 @@ const getGame = async (filePath: string, platform: Platform): Promise<Game | nul
 
 	if (file !== null) return file.game
 
-	const name = path.parse(filePath).name
+	const name = fileInfo.name
 
 	await sleep(apiDelay)
 	const response = await igdb
@@ -126,7 +130,7 @@ const getGame = async (filePath: string, platform: Platform): Promise<Game | nul
 
 	file = await prisma.file.create({
 		data: {
-			path: fileInfo.base,
+			path: filePath,
 			gameId: game.id,
 			platformId: platform.id
 		},
@@ -175,8 +179,8 @@ const scanPlatforms = async (dir: string) => {
 
 console.log('Starting scan')
 
-if (config.gamesDirectory === undefined) {
+if (config.gamesPath === undefined) {
 	throw new Error('Games directory not defined')
 }
 
-scanPlatforms(config.gamesDirectory)
+scanPlatforms(config.gamesPath)

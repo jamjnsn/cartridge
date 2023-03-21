@@ -1,15 +1,17 @@
 <template>
-	<div class="library-container">
-		<main>
-			<GameLink v-for="(game, index) in games" v-key="index" :game="game" />
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<LoadingOverlay v-if="loadingGames" />
-		</main>
+	<LoadingOverlay v-if="loadingGames" />
+	<div class="library-container" v-else>
+		<GameLink v-for="(game, index) in games" v-key="index" :game="game" />
+		<div class="game-spacer"></div>
+		<div class="game-spacer"></div>
+		<div class="game-spacer"></div>
+		<div class="game-spacer"></div>
+		<div class="game-spacer"></div>
+		<div class="game-spacer"></div>
+		<div class="game-spacer"></div>
+		<div class="game-spacer"></div>
+		<div class="game-spacer"></div>
+		<div class="game-spacer"></div>
 	</div>
 </template>
 
@@ -37,7 +39,7 @@ onMounted(async () => {
 $game-width: 150px;
 $game-aspect-ratio: calc(4 / 3);
 
-main {
+.library-container {
 	overflow-y: auto;
 	padding: 1.5rem;
 	display: flex;

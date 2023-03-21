@@ -1,13 +1,13 @@
 import express from 'express'
 import bodyParser from 'body-parser'
+import path from 'path'
 
 import asyncHandler from 'express-async-handler'
 
 import getApiRoutes from './utils/getApiRoutes'
 import getServerMiddleware, { Middleware, MiddlewareHandler } from './utils/getMiddleware'
 
-import * as dotenv from 'dotenv'
-dotenv.config()
+import config from '../config'
 
 const makeApp = async () => {
 	const app = express()
@@ -17,7 +17,12 @@ const makeApp = async () => {
 	app.use(bodyParser.json())
 	app.use(bodyParser.raw())
 
-	app.use('/storage', express.static('../public/storage'))
+	// Define storage routes
+	app.use('/storage', express.static(config.storagePath))
+
+	if (config.gamesPath !== undefined) {
+		app.use('/files', express.static(config.gamesPath))
+	}
 
 	// Get middleware
 	const middleware: Middleware = await getServerMiddleware()
