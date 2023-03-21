@@ -101,7 +101,7 @@ nav {
 	display: flex;
 	align-items: center;
 	padding: 1rem 2rem;
-	background-color: lighten($black-light, 2%);
+	background-color: $black;
 	height: $menu-height;
 
 	z-index: 10;

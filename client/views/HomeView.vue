@@ -1,7 +1,7 @@
 <template>
 	<div class="library-container">
 		<main>
-			<GameLink v-for="game in games" :game="game" />
+			<GameLink v-for="(game, index) in games" v-key="index" :game="game" />
 			<div class="game-spacer"></div>
 			<div class="game-spacer"></div>
 			<div class="game-spacer"></div>
@@ -34,6 +34,9 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
+$game-width: 150px;
+$game-aspect-ratio: calc(4 / 3);
+
 main {
 	overflow-y: auto;
 	padding: 1.5rem;
@@ -44,13 +47,17 @@ main {
 
 .game,
 .game-spacer {
-	$width: 150px;
-	$aspect-ratio: calc(4 / 3);
-
 	flex: 1 1 auto;
-	margin: 0.5rem;
+}
 
-	width: $width;
-	height: calc($width * $aspect-ratio);
+.game-spacer {
+	width: calc($game-width + 1rem);
+}
+
+.game {
+	width: $game-width;
+
+	height: calc($game-width * $game-aspect-ratio);
+	margin: 0.5rem;
 }
 </style>
