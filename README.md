@@ -5,6 +5,10 @@
   </p>
 </div>
 
+<div align="center" style="font-size: 2rem;">
+	<strong>🚧 Cartridge is currently in development and is not yet ready for use. Stay tuned! 🚧</strong>
+</div>
+
 ## About
 
 ![Cartridge Screenshot](https://user-images.githubusercontent.com/1876231/169448529-54259dc2-0ad6-44eb-bc3e-df56220a6e64.png)
