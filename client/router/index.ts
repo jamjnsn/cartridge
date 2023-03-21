@@ -23,6 +23,11 @@ const router = createRouter({
 			name: 'logout',
 			component: () => import('../views/LogoutView.vue'),
 			meta: { requiresLogin: true }
+		},
+		{
+			path: '/games/:slug',
+			name: 'game',
+			component: () => import('../views/GameView.vue')
 		}
 	]
 })

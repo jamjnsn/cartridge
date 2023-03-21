@@ -16,6 +16,8 @@ coverage
 
 .env
 
+/public/storage
+
 /cypress/videos/
 /cypress/screenshots/
 

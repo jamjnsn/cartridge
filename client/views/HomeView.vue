@@ -28,9 +28,9 @@
 			</div>
 
 			<div class="menu-container">
-				<div class="menu-button" :class="{ 'is-active': menuIsOpen }" @click="toggleMenu">
+				<button class="menu-button" :class="{ 'is-active': menuIsOpen }" @click="toggleMenu">
 					<MenuIcon :is-open="menuIsOpen" />
-				</div>
+				</button>
 
 				<div class="menu" v-if="menuIsOpen">
 					<div class="menu-item">
@@ -40,20 +40,37 @@
 			</div>
 		</nav>
 
-		<main></main>
+		<main>
+			<GameLink v-for="game in games" :game="game" />
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<LoadingOverlay v-if="loadingGames" />
+		</main>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 
+import axios from 'axios'
+
+import { Game } from '@prisma/client'
 import { RouterLink } from 'vue-router'
 import MenuIcon from '../components/MenuIcon.vue'
 
 import logo from '../assets/images/logo.svg'
 import slash from '../assets/images/icons/slash.svg'
+import LoadingOverlay from '../components/LoadingOverlay.vue'
+import GameLink from '../components/GameLink.vue'
 
 const searchInput = ref<HTMLInputElement | null>(null)
+
+const loadingGames = ref(true)
+const games = ref<Game[]>([])
 
 const searchInputFocused = ref(false)
 const menuIsOpen = ref(false)
@@ -81,8 +98,13 @@ const onKeyDown = (e: any) => {
 	}
 }
 
-onMounted(() => {
+onMounted(async () => {
 	window.addEventListener('keydown', onKeyDown)
+
+	await axios.get('/api/games').then((res) => {
+		games.value = res.data
+		loadingGames.value = false
+	})
 })
 
 onUnmounted(() => {
@@ -246,6 +268,9 @@ nav {
 
 main {
 	overflow-y: auto;
-	padding: 2rem;
+	padding: 1.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 }
 </style>

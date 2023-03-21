@@ -13,6 +13,8 @@
 	$border-radius: 0.3rem;
 	width: 100%;
 
+	box-shadow: 0 2px 25px rgba(0, 0, 0, 0.25);
+
 	.panel-header,
 	.panel-body {
 		padding: 1rem;
@@ -31,6 +33,8 @@
 		border-radius: $border-radius;
 		background-color: $black-light;
 		overflow: hidden;
+		backdrop-filter: blur(20px);
+		background-color: rgba(0, 0, 0, 0.5);
 
 		&:last-child {
 			border-radius: 0 0 $border-radius $border-radius;

@@ -27,3 +27,50 @@ model Session {
 
     @@map("sessions")
 }
+
+model Platform {
+    id   Int    @id
+    name String
+    slug String @unique
+
+    games GamePlatform[]
+    files File[]
+
+    data Json?
+
+    @@map("platforms")
+}
+
+model Game {
+    id   Int    @id
+    name String
+    slug String @unique
+
+    platforms GamePlatform[]
+    files     File[]
+
+    data Json?
+
+    @@map("games")
+}
+
+model GamePlatform {
+    game       Game     @relation(fields: [gameId], references: [id])
+    gameId     Int
+    platform   Platform @relation(fields: [platformId], references: [id])
+    platformId Int
+
+    @@id([gameId, platformId])
+    @@map("game_platforms")
+}
+
+model File {
+    path       String   @unique
+    game       Game     @relation(fields: [gameId], references: [id])
+    gameId     Int
+    platform   Platform @relation(fields: [platformId], references: [id])
+    platformId Int
+
+    @@id([gameId, platformId])
+    @@map("files")
+}

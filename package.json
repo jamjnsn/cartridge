@@ -11,7 +11,8 @@
 		"build-only": "vite build",
 		"type-check": "vue-tsc --noEmit",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"cart": "ts-node --compiler-options {\"module\":\"CommonJS\"} ./cart.ts"
 	},
 	"prisma": {
 		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -28,6 +29,7 @@
 		"express-async-handler": "^1.2.0",
 		"feather-icons": "^4.29.0",
 		"glob": "^9.3.0",
+		"igdb-api-node": "^5.0.2",
 		"js-cookie": "^3.0.1",
 		"jsonwebtoken": "^9.0.0",
 		"pinia": "^2.0.33",
@@ -40,6 +42,7 @@
 		"@types/bcrypt": "^5.0.0",
 		"@types/body-parser": "^1.19.2",
 		"@types/express": "^4.17.17",
+		"@types/igdb-api-node": "^5.0.0",
 		"@types/js-cookie": "^3.0.3",
 		"@types/jsonwebtoken": "^9.0.1",
 		"@types/node": "^18.14.2",

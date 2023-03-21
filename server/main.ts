@@ -17,6 +17,8 @@ const makeApp = async () => {
 	app.use(bodyParser.json())
 	app.use(bodyParser.raw())
 
+	app.use('/storage', express.static('../public/storage'))
+
 	// Get middleware
 	const middleware: Middleware = await getServerMiddleware()
 
