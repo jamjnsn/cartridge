@@ -25,24 +25,12 @@ const props = defineProps<{
 }>()
 </script>
 
-<style scoped lang="scss">
-.game,
-.game-spacer {
-	$width: 150px;
-	$aspect-ratio: calc(4 / 3);
-	display: block;
-	flex: 1 1 auto;
-
-	width: $width;
-	height: calc($width * $aspect-ratio);
-}
-
+<style lang="scss">
 .game {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
-	margin: 0.5rem;
 	border-radius: 0.5rem;
 	transform: scale(1);
 	transition: transform 0.1s ease, box-shadow 0.2s ease;
