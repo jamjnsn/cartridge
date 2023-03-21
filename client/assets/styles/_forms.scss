@@ -43,6 +43,10 @@ label {
 	display: block;
 	width: 100%;
 
+	input {
+		width: 100%;
+	}
+
 	&:not(:last-child) {
 		margin-bottom: 1rem;
 	}
