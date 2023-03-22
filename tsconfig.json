@@ -1,5 +1,4 @@
 {
-	"include": ["env.d.ts", "client/**/*", "client/**/*.vue"],
 	"compilerOptions": {
 		"target": "ESNext",
 		"useDefineForClassFields": true,
@@ -13,6 +12,10 @@
 		"lib": ["ESNext", "DOM"],
 		"skipLibCheck": true,
 		"noEmit": true,
-		"baseUrl": "."
-	}
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./client/*"]
+		}
+	},
+	"include": ["client/**/*.ts", "client/**/*.d.ts", "client/**/*.tsx", "client/**/*.vue"]
 }
