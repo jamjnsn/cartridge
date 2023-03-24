@@ -16,18 +16,36 @@ const router = createRouter({
 			path: '/login',
 			name: 'login',
 			component: () => import('../views/LoginView.vue'),
-			meta: { requiresGuest: true, hideNavbar: true }
+			meta: { requiresGuest: true }
 		},
 		{
 			path: '/logout',
 			name: 'logout',
 			component: () => import('../views/LogoutView.vue'),
-			meta: { requiresLogin: true, hideNavbar: true }
+			meta: { requiresLogin: true }
 		},
 		{
 			path: '/games/:slug',
 			name: 'game',
 			component: () => import('../views/GameView.vue')
+		},
+		{
+			path: '/admin',
+			name: 'admin-dashboard',
+			component: () => import('../views/admin/DashboardView.vue'),
+			meta: { requiresAdmin: true }
+		},
+		{
+			path: '/admin/users',
+			name: 'admin-users',
+			component: () => import('../views/admin/UsersView.vue'),
+			meta: { requiresAdmin: true }
+		},
+		{
+			path: '/admin/users/:id',
+			name: 'admin-users-edit',
+			component: () => import('../views/admin/UsersEditView.vue'),
+			meta: { requiresAdmin: true }
 		}
 	]
 })

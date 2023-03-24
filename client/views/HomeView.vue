@@ -1,25 +1,29 @@
 <template>
-	<LoadingOverlay v-if="loadingGames" />
-	<div class="library-container" v-else>
-		<GameLink v-for="(game, index) in games" v-key="index" :game="game" />
-		<div class="game-spacer"></div>
-		<div class="game-spacer"></div>
-		<div class="game-spacer"></div>
-		<div class="game-spacer"></div>
-		<div class="game-spacer"></div>
-		<div class="game-spacer"></div>
-		<div class="game-spacer"></div>
-		<div class="game-spacer"></div>
-		<div class="game-spacer"></div>
-		<div class="game-spacer"></div>
-	</div>
+	<LibraryLayout>
+		<LoadingOverlay v-if="loadingGames" />
+		<div class="library-container" v-else>
+			<GameLink v-for="(game, index) in games" v-key="index" :game="game" />
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+			<div class="game-spacer"></div>
+		</div>
+	</LibraryLayout>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import axios from 'axios'
 
-import { Game } from '@prisma/client'
+import type { Game } from '@prisma/client'
+
+import LibraryLayout from '@/components/layouts/LibraryLayout.vue'
 
 import LoadingOverlay from '../components/LoadingOverlay.vue'
 import GameLink from '../components/GameLink.vue'

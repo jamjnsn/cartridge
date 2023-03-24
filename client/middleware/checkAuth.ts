@@ -29,9 +29,15 @@ export default async function checkAuth(to: any, from: any) {
 		}
 	}
 
-	if (to.meta.requiresLogin && user.username === undefined) {
+	if ((to.meta.requiresLogin || to.meta.requiresAdmin) && user.username === undefined) {
 		return {
 			name: 'login'
+		}
+	}
+
+	if (to.meta.requiresAdmin && !user.isAdmin) {
+		return {
+			name: 'home'
 		}
 	}
 }

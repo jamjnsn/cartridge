@@ -1,44 +1,47 @@
 <template>
-	<LoadingOverlay v-if="loadingGame || game === null" />
-	<div class="game-details-container" v-else>
-		<div class="cover">
-			<img :src="`/storage/games/covers/${game.slug}.jpg`" />
-		</div>
+	<LibraryLayout>
+		<LoadingOverlay v-if="loadingGame || game === null" />
+		<div class="game-details-container" v-else>
+			<div class="cover">
+				<img :src="`/storage/games/covers/${game.slug}.jpg`" />
+			</div>
 
-		<div class="info">
-			<header>
-				<h1>{{ game.name }}</h1>
-				<div class="divider"></div>
-			</header>
+			<div class="info">
+				<header>
+					<h1>{{ game.name }}</h1>
+					<div class="divider"></div>
+				</header>
 
-			<div class="game-body">
-				<div class="summary">
-					{{ game.data['summary'] }}
-				</div>
+				<div class="game-body">
+					<div class="summary">
+						{{ game.data['summary'] }}
+					</div>
 
-				<div class="buttons">
-					<a
-						v-for="(file, index) in game.files"
-						class="button is-primary"
-						:href="`/files${file.path}`"
-					>
-						Download for {{ file.platform.data.alternative_name }}
-					</a>
+					<div class="buttons">
+						<a
+							v-for="(file, index) in game.files"
+							class="button is-primary"
+							:href="`/files${file.path}`"
+						>
+							Download for {{ file.platform.data.alternative_name }}
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</LibraryLayout>
 </template>
 
 <script setup lang="ts">
 import config from '../../config'
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import axios from 'axios'
-import { Game } from '@prisma/client'
+import type { Game } from '@prisma/client'
 
 import { useRoute } from 'vue-router'
 
 import LoadingOverlay from '../components/LoadingOverlay.vue'
+import LibraryLayout from '@/components/layouts/LibraryLayout.vue'
 
 const route = useRoute()
 
