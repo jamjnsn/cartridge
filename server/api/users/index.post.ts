@@ -33,3 +33,5 @@ export default async function (req: any, res: any) {
 		}
 	}
 }
+
+export const middleware = ["requireAuth", "requireAdmin"]

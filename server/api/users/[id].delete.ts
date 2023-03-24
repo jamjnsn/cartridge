@@ -11,3 +11,5 @@ export default async function (req: any, res: any) {
 
 	res.send({ message: 'User deleted' })
 }
+
+export const middleware = ["requireAuth", "requireAdmin"]

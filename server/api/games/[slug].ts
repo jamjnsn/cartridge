@@ -26,3 +26,5 @@ export default async function (req: any, res: any) {
 		res.send(game)
 	}
 }
+
+export const middleware = ["requireAuth"]

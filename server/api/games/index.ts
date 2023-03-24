@@ -4,3 +4,5 @@ export default async function (req: any, res: any) {
 	const games = await prisma.game.findMany()
 	res.send(games)
 }
+
+export const middleware = ["requireAuth"]

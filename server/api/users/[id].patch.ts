@@ -3,7 +3,16 @@ import prisma from '../../utils/prisma'
 import { getPrismaErrorCode, sendError } from '../../utils/error'
 
 export default async function (req: any, res: any) {
+	const user = req.session.user
 	const id = req.params.id
+
+	if(user.id !== id && !user.isAdmin) {
+		return sendError(res, {
+			code: 403,
+			message: "User not authorized"
+		})
+	}
+
 	const { username, password } = req.body
 
 	const data: {
@@ -35,3 +44,5 @@ export default async function (req: any, res: any) {
 		}
 	}
 }
+
+export const middleware = ["requireAuth"]

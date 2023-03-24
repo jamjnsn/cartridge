@@ -19,3 +19,5 @@ export default async function (req: any, res: any) {
 		res.send(userHelper.serialize(user))
 	}
 }
+
+export const middleware = ["requireAuth"]

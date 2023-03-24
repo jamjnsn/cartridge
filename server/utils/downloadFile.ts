@@ -1,5 +1,4 @@
 import fs from 'fs'
-
 import axios from 'axios'
 
 export async function downloadFile(fileUrl: string, outputPath: string): Promise<any> {
