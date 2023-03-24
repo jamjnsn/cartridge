@@ -19,7 +19,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import axios from 'axios'
+
+import useAxios from '@/utils/useAxios'
 
 import type { Game } from '@prisma/client'
 
@@ -27,6 +28,8 @@ import LibraryLayout from '@/components/layouts/LibraryLayout.vue'
 
 import LoadingOverlay from '../components/LoadingOverlay.vue'
 import GameLink from '../components/GameLink.vue'
+
+const axios = useAxios()
 
 const loadingGames = ref(true)
 const games = ref<Game[]>([])

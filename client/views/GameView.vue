@@ -35,15 +35,16 @@
 <script setup lang="ts">
 import config from '../../config'
 import { ref, onMounted, onUnmounted, computed } from 'vue'
-import axios from 'axios'
 import type { Game } from '@prisma/client'
 
+import useAxios from '@/utils/useAxios'
 import { useRoute } from 'vue-router'
 
 import LoadingOverlay from '../components/LoadingOverlay.vue'
 import LibraryLayout from '@/components/layouts/LibraryLayout.vue'
 
 const route = useRoute()
+const axios = useAxios()
 
 const loadingGame = ref(true)
 const game = ref<any>(null)

@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
+import useAxios from '@/utils/useAxios'
 import Cookies from 'js-cookie'
 
 import { useRouter } from 'vue-router'
@@ -15,6 +15,7 @@ import AuthLayout from '../components/layouts/AuthLayout.vue'
 
 const token = Cookies.get('token')
 const router = useRouter()
+const axios = useAxios()
 
 if (token) {
 	axios

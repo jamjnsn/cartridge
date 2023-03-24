@@ -38,8 +38,8 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
 import Cookies from 'js-cookie'
+import useAxios from '@/utils/useAxios'
 
 import AuthLayout from '../components/layouts/AuthLayout.vue'
 import LoadingOverlay from '../components/LoadingOverlay.vue'
@@ -48,6 +48,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+const axios = useAxios()
 
 const isProcessing = ref(false)
 const error = ref('')

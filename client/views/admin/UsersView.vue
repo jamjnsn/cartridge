@@ -2,10 +2,12 @@
 import AdminLayout from '@/components/layouts/AdminLayout.vue'
 import type { User } from '@prisma/client'
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import useAxios from '@/utils/useAxios';
 
 const loadingUsers = ref(true)
 const users = ref<User[]>([])
+
+const axios = useAxios()
 
 onMounted(async () => {
 	await axios.get('/api/users').then((res) => {

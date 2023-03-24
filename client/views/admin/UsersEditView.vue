@@ -2,9 +2,10 @@
 import AdminLayout from '@/components/layouts/AdminLayout.vue'
 import type { User } from '@prisma/client'
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
 import { useRoute } from 'vue-router'
+import useAxios from '@/utils/useAxios'
 
+const axios = useAxios()
 const route = useRoute()
 const loadingUser = ref(true)
 const user = ref<User>()
