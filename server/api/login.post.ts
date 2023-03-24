@@ -11,7 +11,7 @@ export default async function (req: any, res: any) {
 	const { username, password } = req.body
 
 	if (username === undefined || password === undefined) {
-		throw sendError(res, {
+		return sendError(res, {
 			code: 400,
 			message: 'Username and password are required'
 		})
@@ -24,14 +24,14 @@ export default async function (req: any, res: any) {
 	})
 
 	if (user === null) {
-		throw sendError(res, {
+		return sendError(res, {
 			code: 404,
 			message: 'User not found'
 		})
 	}
 
 	if (!userHelper.comparePassword(password, user.password)) {
-		throw sendError(res, {
+		return sendError(res, {
 			code: 403,
 			message: 'Invalid password'
 		})
@@ -42,7 +42,7 @@ export default async function (req: any, res: any) {
 	}
 
 	if (process.env.JWT_SECRET === null) {
-		throw new Error('No JWT secret defined in .env')
+		return new Error('No JWT secret defined in .env')
 	}
 
 	// Todo: Add config for token duration

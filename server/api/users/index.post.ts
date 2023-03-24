@@ -6,7 +6,7 @@ export default async function (req: any, res: any) {
 	const { username, password } = req.body
 
 	if (username === undefined || password === undefined) {
-		throw sendError(res, {
+		return sendError(res, {
 			code: 400,
 			message: 'Please provide a username and a password'
 		})
@@ -24,7 +24,7 @@ export default async function (req: any, res: any) {
 	} catch (e) {
 		switch (getPrismaErrorCode(e)) {
 			case 'P2002':
-				throw sendError(res, {
+				return sendError(res, {
 					code: 400,
 					message: 'Username already exists'
 				})

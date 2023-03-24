@@ -1,11 +1,9 @@
-import express from 'express'
+import express, { RequestHandler } from 'express'
 import bodyParser from 'body-parser'
 import path from 'path'
 
-import asyncHandler from 'express-async-handler'
-
 import getApiRoutes from './utils/getApiRoutes'
-import getServerMiddleware, { Middleware, MiddlewareHandler } from './utils/getMiddleware'
+import getServerMiddleware, { Middleware } from './utils/getMiddleware'
 
 import config from '../config'
 
@@ -31,14 +29,14 @@ const makeApp = async () => {
 	const apiRoutes = await getApiRoutes()
 	for (const route of apiRoutes) {
 		const method = route.method as 'get' | 'post' | 'put' | 'patch' | 'delete'
-		const handlers: MiddlewareHandler[] = []
+		const handlers: RequestHandler[] = []
 
 		route.middleware?.forEach((middlewareName) => {
 			const middlewareHandler = middleware[middlewareName]
 			handlers.push(middlewareHandler)
 		})
 
-		app[method](`/api${route.path}`, ...handlers, asyncHandler(route.handler))
+		app[method](`/api${route.path}`, ...handlers, route.handler)
 	}
 
 	return app

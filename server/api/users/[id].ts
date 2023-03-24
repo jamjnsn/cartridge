@@ -11,7 +11,7 @@ export default async function (req: any, res: any) {
 	})
 
 	if (user === null) {
-		throw sendError(res, {
+		return sendError(res, {
 			code: 404,
 			message: 'User not found'
 		})

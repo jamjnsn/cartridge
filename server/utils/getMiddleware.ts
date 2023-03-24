@@ -3,9 +3,10 @@ import path from 'path'
 import { globSync } from 'glob'
 import config from '../../config'
 
-export type MiddlewareHandler = (req: any, res: any, next: any) => null
+import { RequestHandler } from 'express'
+
 export type Middleware = {
-	[key: string]: MiddlewareHandler
+	[key: string]: RequestHandler
 }
 
 export default async function getServerMiddleware(): Promise<{}> {

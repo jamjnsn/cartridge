@@ -18,7 +18,7 @@ export default async function (req: any, res: any) {
 	})
 
 	if (game === null) {
-		throw sendError(res, {
+		return sendError(res, {
 			code: 404,
 			message: 'Game not found'
 		})

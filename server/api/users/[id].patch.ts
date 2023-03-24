@@ -26,7 +26,7 @@ export default async function (req: any, res: any) {
 	} catch (e) {
 		switch (getPrismaErrorCode(e)) {
 			case 'P2025':
-				throw sendError(res, {
+				return sendError(res, {
 					code: 404,
 					message: 'User not found'
 				})
