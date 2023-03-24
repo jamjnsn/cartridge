@@ -6,7 +6,7 @@
 			<div class="panel-body">
 				<Transition>
 					<div class="alert is-bad" v-if="error !== ''">
-						<button @click="error = ''"><feather-icon type="x" /></button>
+						<button class="close-button" @click="error = ''"><feather-icon type="x" /></button>
 						{{ error }}
 					</div>
 				</Transition>

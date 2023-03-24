@@ -17,6 +17,9 @@
 				<router-link to="/" class="button is-full-width">
 					<feather-icon type="arrow-left" /> Back to Site
 				</router-link>
+				<router-link to="/" class="button is-bad is-full-width">
+					<feather-icon type="log-out" /> Logout
+				</router-link>
 			</div>
 		</div>
 
@@ -35,6 +38,7 @@ import logo from '@/assets/images/logo.svg'
 	display: flex;
 	flex-direction: row;
 	height: 100%;
+	width: 100%;
 }
 
 .sidebar {

@@ -13,15 +13,21 @@ export default async function (req: any, res: any) {
 		})
 	}
 
-	const { username, password } = req.body
+	const { username, password, isAdmin } = req.body
 
 	const data: {
 		username?: string
 		password?: string
+		isAdmin?: boolean
 	} = {}
 
 	if (username) data.username = username
 	if (password) data.password = userHelper.hashPassword(password)
+	
+	// ToDo: Find better way to keep initial user
+	if(isAdmin !== undefined && id !== 1) {
+		data.isAdmin = isAdmin
+	}
 
 	try {
 		const user = await prisma.user.update({

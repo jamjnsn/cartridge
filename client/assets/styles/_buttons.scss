@@ -18,6 +18,10 @@
 		background-color: lighten($grey-dark, 4%);
 	}
 
+	&.is-small {
+		font-size: 0.8em;
+	}
+
 	&.is-primary {
 		background-color: $primary;
 
@@ -72,6 +76,7 @@
 
 .buttons {
 	display: flex;
+	flex-direction: row;
 
 	& > .button {
 		&:not(:last-child) {

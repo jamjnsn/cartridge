@@ -14,7 +14,7 @@ const user = ref<User>()
 
 const submit = async (data: any) => {
 	await axios
-		.patch(`/api/users/${user.value?.id}`, data)
+		.post(`/api/users`, data)
 		.then((res) => {
 			router.push('/admin/users')
 		})
@@ -22,21 +22,12 @@ const submit = async (data: any) => {
 			console.log(e)
 		})
 }
-
-onMounted(async () => {
-	await axios.get(`/api/users/${route.params.id}`).then((res) => {
-		user.value = res.data
-		loadingUser.value = false
-	})
-})
 </script>
 
 <template>
 	<AdminLayout>
-		<template v-if="!loadingUser">
-			<h1 class="title">Editing {{ user?.username }}</h1>
-			<UserForm :user="user" @submit="submit"></UserForm>
-		</template>
+		<h1 class="title">Creating a User</h1>
+		<UserForm @submit="submit"></UserForm>
 	</AdminLayout>
 </template>
 

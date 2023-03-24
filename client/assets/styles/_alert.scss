@@ -1,8 +1,13 @@
 .alert {
 	padding: 0.75em;
 	border-radius: 0.3em;
+	background-color: $grey-darker;
 
-	button {
+	p:not(:last-child) {
+		margin-bottom: 1rem;
+	}
+
+	.close-button {
 		display: flex;
 		align-items: center;
 		justify-content: center;

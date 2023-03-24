@@ -50,4 +50,11 @@ label {
 	&:not(:last-child) {
 		margin-bottom: 1rem;
 	}
+
+	&.is-inline {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
 }
