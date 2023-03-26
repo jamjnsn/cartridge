@@ -10,9 +10,6 @@ import Cookies from 'js-cookie'
 
 import { useRouter } from 'vue-router'
 
-import LoadingOverlay from '../components/LoadingOverlay.vue'
-import AuthLayout from '../components/layouts/AuthLayout.vue'
-
 const token = Cookies.get('token')
 const router = useRouter()
 const axios = useAxios()

@@ -40,9 +40,6 @@ import type { Game } from '@prisma/client'
 import useAxios from '@/utils/useAxios'
 import { useRoute } from 'vue-router'
 
-import LoadingOverlay from '../components/LoadingOverlay.vue'
-import LibraryLayout from '@/components/layouts/LibraryLayout.vue'
-
 const route = useRoute()
 const axios = useAxios()
 

@@ -24,11 +24,6 @@ import useAxios from '@/utils/useAxios'
 
 import type { Game } from '@prisma/client'
 
-import LibraryLayout from '@/components/layouts/LibraryLayout.vue'
-
-import LoadingOverlay from '../components/LoadingOverlay.vue'
-import GameLink from '../components/GameLink.vue'
-
 const axios = useAxios()
 
 const loadingGames = ref(true)

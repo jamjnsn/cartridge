@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { User } from '@prisma/client'
-import InputToggle from '../InputToggle.vue'
 import { ref } from 'vue'
 
 const emit = defineEmits(['submit'])

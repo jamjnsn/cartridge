@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import AdminLayout from '@/components/layouts/AdminLayout.vue'
 import type { User } from '@prisma/client'
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'

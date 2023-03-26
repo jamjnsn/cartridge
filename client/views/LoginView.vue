@@ -41,9 +41,6 @@
 import Cookies from 'js-cookie'
 import useAxios from '@/utils/useAxios'
 
-import AuthLayout from '../components/layouts/AuthLayout.vue'
-import LoadingOverlay from '../components/LoadingOverlay.vue'
-
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
