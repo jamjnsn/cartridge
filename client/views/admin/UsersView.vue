@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import type { User } from '@prisma/client'
-import { ref, onMounted } from 'vue'
-import useAxios from '@/utils/useAxios'
 
 const loadingUsers = ref(true)
 const users = ref<User[]>([])

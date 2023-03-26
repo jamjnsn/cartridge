@@ -1,4 +1,3 @@
-import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import devalue from '@nuxt/devalue'

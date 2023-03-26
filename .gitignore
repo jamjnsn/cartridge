@@ -31,4 +31,6 @@ coverage
 *.sln
 *.sw?
 
+# Unplugin generated files
 /components.d.ts
+/auto-imports.d.ts

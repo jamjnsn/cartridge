@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { User } from '@prisma/client'
-import { ref } from 'vue'
 
 const emit = defineEmits(['submit'])
 

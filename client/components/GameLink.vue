@@ -19,7 +19,6 @@
 
 <script setup lang="ts">
 import { Game } from '@prisma/client'
-import { RouterLink } from 'vue-router'
 
 const props = defineProps<{
 	game: Game

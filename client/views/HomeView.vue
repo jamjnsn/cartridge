@@ -18,10 +18,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-
-import useAxios from '@/utils/useAxios'
-
 import type { Game } from '@prisma/client'
 
 const axios = useAxios()

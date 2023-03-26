@@ -5,10 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import useAxios from '@/utils/useAxios'
 import Cookies from 'js-cookie'
-
-import { useRouter } from 'vue-router'
 
 const token = Cookies.get('token')
 const router = useRouter()

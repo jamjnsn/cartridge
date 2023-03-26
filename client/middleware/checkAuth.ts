@@ -1,6 +1,5 @@
 import { useUserStore } from '../utils/useUserStore'
 import Cookies from 'js-cookie'
-import useAxios from '@/utils/useAxios'
 
 export default async function checkAuth(to: any, from: any) {
 	const axios = useAxios()

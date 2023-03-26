@@ -39,10 +39,6 @@
 
 <script setup lang="ts">
 import Cookies from 'js-cookie'
-import useAxios from '@/utils/useAxios'
-
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const axios = useAxios()

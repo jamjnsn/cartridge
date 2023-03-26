@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import type { User } from '@prisma/client'
-import { ref, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import useAxios from '@/utils/useAxios'
-import UserForm from '@/components/forms/UserForm.vue'
 
 const axios = useAxios()
 const route = useRoute()

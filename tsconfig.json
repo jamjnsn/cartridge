@@ -17,5 +17,5 @@
 			"@/*": ["./client/*"]
 		}
 	},
-	"include": ["client/**/*.ts", "client/**/*.d.ts", "client/**/*.tsx", "client/**/*.vue"]
+	"include": ["client/**/*.ts", "client/**/*.d.ts", "client/**/*.tsx", "client/**/*.vue", "*.d.ts"]
 }

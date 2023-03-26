@@ -34,11 +34,7 @@
 
 <script setup lang="ts">
 import config from '../../config'
-import { ref, onMounted, onUnmounted, computed } from 'vue'
 import type { Game } from '@prisma/client'
-
-import useAxios from '@/utils/useAxios'
-import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const axios = useAxios()

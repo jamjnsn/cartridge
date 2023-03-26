@@ -4,12 +4,19 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 
 import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 
 export default defineConfig({
 	plugins: [
 		vue(),
+		AutoImport({
+			dts: true,
+			imports: ['vue', 'vue-router'],
+			defaultExportByFilename: true,
+			dirs: ['client/utils']
+		}),
 		Components({
-			dirs: ['client/components'],
+			dirs: ['client/components', 'client/views'],
 			dts: true,
 			types: [
 				{

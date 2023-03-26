@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import Cookies from 'js-cookie'
 
-export default function useAxios() {
+export function useAxios() {
 	const token = Cookies.get('token')
 
 	if (token !== undefined) {
