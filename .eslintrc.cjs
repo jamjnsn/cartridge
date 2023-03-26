@@ -10,9 +10,20 @@ module.exports = {
 		'@vue/eslint-config-prettier/skip-formatting'
 	],
 	parserOptions: {
-		ecmaVersion: 'latest',
+		ecmaVersion: 'latest'
 	},
 	rules: {
-		"no-undef": 0
+		'no-undef': 0,
+		'vue/block-lang': [
+			'error',
+			{
+				script: {
+					lang: 'ts'
+				},
+				style: {
+					lang: 'scss'
+				}
+			}
+		]
 	}
 }

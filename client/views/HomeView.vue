@@ -2,7 +2,7 @@
 	<LibraryLayout>
 		<LoadingOverlay v-if="loadingGames" />
 		<div class="library-container" v-else>
-			<GameLink v-for="(game, index) in games" v-key="index" :game="game" />
+			<GameLink v-for="(game, index) in games" :key="index" :game="game" />
 			<div class="game-spacer"></div>
 			<div class="game-spacer"></div>
 			<div class="game-spacer"></div>

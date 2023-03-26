@@ -20,6 +20,7 @@
 					<div class="buttons">
 						<a
 							v-for="(file, index) in game.files"
+							:key="index"
 							class="button is-primary"
 							:href="`/files${file.path}`"
 						>
@@ -33,9 +34,6 @@
 </template>
 
 <script setup lang="ts">
-import config from '../../config'
-import type { Game } from '@prisma/client'
-
 const route = useRoute()
 const axios = useAxios()
 

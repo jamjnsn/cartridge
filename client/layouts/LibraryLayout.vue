@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import MenuIcon from '@/components/MenuIcon.vue'
 import logo from '@/assets/images/logo.svg'
-// import { useUserStore } from '@/utils/useUserStore'
 
 const searchInput = ref<HTMLInputElement | null>(null)
 const searchInputFocused = ref(false)

@@ -16,7 +16,7 @@ export default defineConfig({
 			dirs: ['client/utils']
 		}),
 		Components({
-			dirs: ['client/components', 'client/views'],
+			dirs: ['client/components', 'client/views', 'client/layouts'],
 			dts: true,
 			types: [
 				{
