@@ -61,3 +61,9 @@ $game-aspect-ratio: calc(4 / 3);
 	margin: 0.5rem;
 }
 </style>
+
+<route>
+{
+	name: "home"
+}
+</route>

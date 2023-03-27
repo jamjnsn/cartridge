@@ -5,10 +5,39 @@ import path from 'path'
 
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import Pages from 'vite-plugin-pages'
 
 export default defineConfig({
 	plugins: [
 		vue(),
+		Pages({
+			dirs: 'client/pages',
+			extendRoute(route, parent) {
+				// Protect all admin routes
+				if (route.path.startsWith('/admin')) {
+					return {
+						...route,
+						meta: { requiresAdmin: true }
+					}
+				}
+
+				if (route.path === '/login') {
+					// Require guest for login page
+					return {
+						...route,
+						meta: { requiresGuest: true }
+					}
+				} else {
+					// Require login for all other pages
+					return {
+						...route,
+						meta: { requiresLogin: true }
+					}
+				}
+
+				return route
+			}
+		}),
 		AutoImport({
 			dts: true,
 			imports: ['vue', 'vue-router'],

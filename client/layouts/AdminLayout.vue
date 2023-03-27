@@ -4,20 +4,20 @@
 			<div class="sidebar-start">
 				<img src="/images/logo-full.png" class="logo" />
 
-				<router-link to="/admin/library" class="button is-full-width is-primary">
+				<!-- <router-link :to="{ name: 'admin-library' }" class="button is-full-width is-primary">
 					<feather-icon type="book" /> Library
-				</router-link>
+				</router-link> -->
 
-				<router-link to="/admin/users" class="button is-full-width is-primary">
+				<router-link :to="{ name: 'admin-users' }" class="button is-full-width is-primary">
 					<feather-icon type="users" /> Users
 				</router-link>
 			</div>
 
 			<div class="sidebar-end">
-				<router-link to="/" class="button is-full-width">
+				<router-link :to="{ name: 'home' }" class="button is-full-width">
 					<feather-icon type="arrow-left" /> Back to Site
 				</router-link>
-				<router-link to="/" class="button is-bad is-full-width">
+				<router-link :to="{ name: 'logout' }" class="button is-bad is-full-width">
 					<feather-icon type="log-out" /> Logout
 				</router-link>
 			</div>

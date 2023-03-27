@@ -36,3 +36,9 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss"></style>
+
+<route>
+{
+	name: "admin-user-edit"
+}
+</route>

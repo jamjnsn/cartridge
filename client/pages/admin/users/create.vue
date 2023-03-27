@@ -27,3 +27,9 @@ const submit = async (data: any) => {
 </template>
 
 <style scoped lang="scss"></style>
+
+<route>
+{
+	name: "admin-user-create"
+}
+</route>

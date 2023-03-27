@@ -127,3 +127,9 @@ header {
 	}
 }
 </style>
+
+<route>
+{
+	name: "game"
+}
+</route>

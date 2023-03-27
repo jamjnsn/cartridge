@@ -32,5 +32,9 @@ if (token) {
 				name: 'home'
 			})
 		})
+} else {
+	router.push({
+		name: 'home'
+	})
 }
 </script>

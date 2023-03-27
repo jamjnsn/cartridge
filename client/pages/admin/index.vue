@@ -3,3 +3,9 @@
 <template>
 	<AdminLayout> Welcome! </AdminLayout>
 </template>
+
+<route>
+{
+	name: "admin-dashboard"
+}
+</route>

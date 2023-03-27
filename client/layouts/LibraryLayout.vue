@@ -42,7 +42,7 @@ onUnmounted(() => {
 	<div class="layout">
 		<nav>
 			<div>
-				<router-link to="/" class="home-link">
+				<router-link :to="{ name: 'home' }" class="home-link">
 					<inline-svg :src="logo" class="logo" />
 				</router-link>
 			</div>
@@ -74,11 +74,11 @@ onUnmounted(() => {
 
 				<div class="menu" v-if="menuIsOpen">
 					<template v-if="user.isAdmin">
-						<router-link to="/admin" class="button is-full-width"
+						<router-link :to="{ name: 'admin-dashboard' }" class="button is-full-width"
 							><feather-icon type="key" /> Admin</router-link
 						>
 					</template>
-					<router-link to="/logout" class="button is-bad is-full-width"
+					<router-link :to="{ name: 'logout' }" class="button is-bad is-full-width"
 						><feather-icon type="log-out" /> Logout</router-link
 					>
 				</div>

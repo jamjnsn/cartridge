@@ -69,7 +69,14 @@ const formError = ref<string | undefined>(undefined)
 
 		<div class="buttons">
 			<button type="submit" class="button is-primary">Save</button>
-			<RouterLink to="/admin/users" class="button is-ghost"> Cancel </RouterLink>
+			<RouterLink
+				:to="{
+					name: 'admin-users'
+				}"
+				class="button is-ghost"
+			>
+				Cancel
+			</RouterLink>
 		</div>
 	</form>
 </template>

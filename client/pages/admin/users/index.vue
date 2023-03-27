@@ -37,7 +37,12 @@ onMounted(async () => {
 	<AdminLayout>
 		<h1 class="title">Users</h1>
 		<div class="buttons">
-			<RouterLink to="/admin/users/create" class="button is-small">
+			<RouterLink
+				:to="{
+					name: 'admin-user-create'
+				}"
+				class="button is-small"
+			>
 				<feather-icon type="plus" /> Create
 			</RouterLink>
 		</div>
@@ -58,7 +63,7 @@ onMounted(async () => {
 					<td class="controls">
 						<RouterLink
 							:to="{
-								name: 'admin-users-edit',
+								name: 'admin-user-edit',
 								params: { id: user.id }
 							}"
 						>
@@ -138,3 +143,12 @@ table {
 	margin-top: 0.5rem;
 }
 </style>
+
+<route>
+{
+	name: "admin-users",
+	meta: {
+		requiresAdmin: true
+	}
+}
+</route>
