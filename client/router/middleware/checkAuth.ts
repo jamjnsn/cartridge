@@ -1,4 +1,4 @@
-import { useUserStore } from '../utils/useUserStore'
+import { useUserStore } from '../../utils/useUserStore'
 import Cookies from 'js-cookie'
 
 export default async function checkAuth(to: any, from: any) {

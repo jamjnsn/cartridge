@@ -1,4 +1,4 @@
-import { useUserStore } from '../utils/useUserStore'
+import { useUserStore } from '../../utils/useUserStore'
 
 export default async function requireGuest(to: any, from: any) {
 	const user = useUserStore()
