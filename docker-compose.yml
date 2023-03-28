@@ -1,15 +1,15 @@
 services:
-  db:
-    image: postgres
-    restart: unless-stopped
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_DB: ${DB_DATABASE}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-  adminer:
-    image: adminer
-    restart: unless-stopped
-    ports:
-      - 8080:8080
+    db:
+        image: postgres
+        restart: unless-stopped
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_DB: ${DB_DATABASE}
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+    adminer:
+        image: adminer
+        restart: unless-stopped
+        ports:
+            - 8080:8080
