@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "concurrently npm:dev-client npm:dev-server",
 		"dev-client": "vite",
-		"dev-server": "nodemon server/main.ts -w server",
+		"dev-server": "nodemon --watch server --watch tsconfig.server.json --watch config.ts server/main.ts ",
 		"build": "run-p type-check build-only",
 		"preview": "vite preview",
 		"build-only": "vite build",
