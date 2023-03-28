@@ -1,4 +1,12 @@
 import axios from 'axios'
+import axiosRetry from 'axios-retry'
+
+axiosRetry(axios, {
+	retries: Infinity,
+	retryDelay: (retryCount) => {
+		return retryCount * 1000
+	}
+})
 
 import Cookies from 'js-cookie'
 
