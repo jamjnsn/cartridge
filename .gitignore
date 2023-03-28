@@ -31,8 +31,6 @@ coverage
 *.sln
 *.sw?
 
-/build
-
 # Unplugin generated files
-/client/components.d.ts
-/client/auto-imports.d.ts
+/components.d.ts
+/auto-imports.d.ts

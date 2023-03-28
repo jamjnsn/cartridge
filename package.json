@@ -12,10 +12,10 @@
 		"type-check": "vue-tsc --noEmit",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
 		"format": "prettier --write .",
-		"cart": "ts-node ./cart.ts"
+		"cart": "ts-node --compiler-options {\"module\":\"CommonJS\"} ./cart.ts"
 	},
 	"prisma": {
-		"seed": "ts-node prisma/seed.ts"
+		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
 	},
 	"dependencies": {
 		"@fontsource/poppins": "^4.5.10",
