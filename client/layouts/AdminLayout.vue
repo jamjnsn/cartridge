@@ -46,7 +46,7 @@ import logo from '@/assets/images/logo.svg'
 	flex-direction: column;
 	flex: 0 0 auto;
 	width: 250px;
-	background-color: $black-light;
+	background-color: $black-lighter;
 	justify-content: space-between;
 
 	.button:not(:last-child) {
@@ -66,17 +66,11 @@ import logo from '@/assets/images/logo.svg'
 
 .sidebar,
 main {
-	padding: 1rem;
+	padding: 1.25rem;
 	overflow-y: auto;
 }
 
 main {
 	flex: 1 1 auto;
-}
-
-hr {
-	outline: none;
-	border: none;
-	border-bottom: 1px solid $grey-darker;
 }
 </style>
