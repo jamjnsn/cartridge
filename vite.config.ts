@@ -7,9 +7,12 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Pages from 'vite-plugin-pages'
 
+import sassGlobImports from 'vite-plugin-sass-glob-import'
+
 export default defineConfig({
 	plugins: [
 		vue(),
+		sassGlobImports(),
 		Pages({
 			dirs: 'client/pages',
 			extendRoute(route, parent) {
@@ -81,7 +84,7 @@ export default defineConfig({
 	css: {
 		preprocessorOptions: {
 			scss: {
-				additionalData: `@import "@/assets/styles/utilities/global.scss";`
+				additionalData: `@import "@/assets/styles/global.scss";`
 			}
 		}
 	}

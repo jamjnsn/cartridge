@@ -105,6 +105,7 @@ $menu-height: 80px;
 main {
 	flex: 1 1 auto;
 	overflow-y: auto;
+	background-color: $black-lighter;
 }
 
 nav {
@@ -193,6 +194,7 @@ nav {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			background-color: transparent;
 			color: $grey;
 			text-shadow: 0 0.05em 0.5em transparent;
 			filter: drop-shadow(0 0.05em 0.5em transparentize($white, 0.8));

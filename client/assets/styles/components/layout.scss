@@ -14,12 +14,6 @@
 	}
 }
 
-hr {
-	border: 0;
-	outline: 0;
-	border-bottom: 1px solid rgba(255,255,255,0.25);
-}
-
 .panel {
 	$border-radius: 0.3rem;
 	width: 100%;
@@ -56,16 +50,11 @@ hr {
 table {
 	$border-radius: 0.3rem;
 	width: 100%;
-	// border-collapse: collapse;
 
 	td,
 	th {
 		text-align: left;
 		padding: 0.5rem;
-
-		&:not(:last-child) {
-			// border-right: 1px solid red;
-		}
 	}
 
 	thead {
