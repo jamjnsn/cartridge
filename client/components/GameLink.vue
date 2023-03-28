@@ -37,6 +37,7 @@ const props = defineProps<{
 	transition: transform 0.1s ease, box-shadow 0.1s ease;
 	box-shadow: 0 0.1em 0.25em $black;
 	z-index: 1;
+	background-image: $fancy-gradient;
 
 	&:hover {
 		transform: scale(1.1);
