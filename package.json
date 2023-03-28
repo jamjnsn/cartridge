@@ -66,5 +66,9 @@
 		"vite-plugin-sass-glob-import": "^2.0.0",
 		"vue-inline-svg": "^3.1.2",
 		"vue-tsc": "^1.2.0"
+	},
+	"engines": {
+		"npm": "please-use-yarn",
+		"yarn": ">= 1.22.19"
 	}
 }
