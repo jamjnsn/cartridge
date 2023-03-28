@@ -14,7 +14,7 @@
 				<form @submit.prevent="submit">
 					<div class="field">
 						<label><feather-icon type="user" /> Username</label>
-						<input type="text" name="username" :disabled="isProcessing" />
+						<input type="text" name="username" :disabled="isProcessing" ref="usernameInput" />
 					</div>
 
 					<div class="field">
@@ -45,6 +45,12 @@ const axios = useAxios()
 
 const isProcessing = ref(false)
 const error = ref('')
+
+const usernameInput = ref<HTMLInputElement | null>(null)
+
+onMounted(() => {
+	usernameInput.value?.focus()
+})
 
 const submit = (e: any) => {
 	const username = e.target.elements.username.value
