@@ -17,5 +17,6 @@
 			"@/*": ["./client/*"]
 		}
 	},
-	"include": ["client/**/*.ts", "client/**/*.d.ts", "client/**/*.tsx", "client/**/*.vue", "*.d.ts"]
+	"include": ["client/**/*.ts", "client/**/*.d.ts", "client/**/*.vue"],
+    "references": [{ "path": "../tsconfig.vite.json" }]
 }

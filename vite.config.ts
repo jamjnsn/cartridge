@@ -39,14 +39,14 @@ export default defineConfig({
 			}
 		}),
 		AutoImport({
-			dts: true,
+			dts: './client/auto-imports.d.ts',
 			imports: ['vue', 'vue-router'],
 			defaultExportByFilename: true,
 			dirs: ['client/utils']
 		}),
 		Components({
+			dts: './client/components.d.ts',
 			dirs: ['client/components', 'client/views', 'client/layouts'],
-			dts: true,
 			types: [
 				{
 					from: 'vue-router',
@@ -84,5 +84,8 @@ export default defineConfig({
 				additionalData: `@import "@/assets/styles/utilities/global.scss";`
 			}
 		}
+	},
+	build: {
+		outDir: './build'
 	}
 })
