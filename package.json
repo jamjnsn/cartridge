@@ -32,6 +32,7 @@
 		"igdb-api-node": "^5.0.2",
 		"js-cookie": "^3.0.1",
 		"jsonwebtoken": "^9.0.0",
+		"meilisearch": "^0.32.0",
 		"pinia": "^2.0.33",
 		"vite-plugin-pages": "^0.29.0",
 		"vue": "^3.2.47",
