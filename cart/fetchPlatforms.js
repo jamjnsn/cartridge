@@ -19,7 +19,6 @@ const fetchPlatforms = async () => {
 
 	for (const result of results) {
 		const data = {
-			id: result.id,
 			name: result.name,
 			slug: result.slug,
 			data: result
@@ -28,18 +27,14 @@ const fetchPlatforms = async () => {
 		// Update or create platform in database
 		await prisma.platform.upsert({
 			where: {
-				id: data.id
+				id: result.id
 			},
 			update: {
-				name: result.name,
-				slug: result.slug,
-				data: result
+				...data
 			},
 			create: {
-				id: data.id,
-				name: result.name,
-				slug: result.slug,
-				data: result
+				id: result.id,
+				...data
 			}
 		})
 	}
@@ -48,6 +43,7 @@ const fetchPlatforms = async () => {
 	const platforms = await prisma.platform.findMany()
 
 	// ToDo: Add data to search index
+	meiliSearch.index('platforms').addDocuments(platforms)
 }
 
 module.exports = fetchPlatforms
