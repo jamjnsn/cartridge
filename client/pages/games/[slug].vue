@@ -3,7 +3,7 @@
 		<LoadingOverlay v-if="loadingGame || game === null" />
 		<div class="game-details-container" v-else>
 			<div class="cover">
-				<img :src="`/storage/games/covers/${game.slug}.jpg`" />
+				<img :src="`/storage/media/covers/${game.slug}.jpg`" />
 			</div>
 
 			<div class="info">
@@ -22,7 +22,7 @@
 							v-for="(file, index) in game.files"
 							:key="index"
 							class="button is-primary"
-							:href="`/files${file.path}`"
+							:href="`/files/${file.path}`"
 						>
 							Download for {{ file.platform.data.alternative_name }}
 						</a>

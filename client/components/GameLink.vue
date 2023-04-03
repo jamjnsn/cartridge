@@ -9,10 +9,10 @@
 		<div
 			class="underlay"
 			:style="{
-				backgroundImage: `url(/storage/games/covers/${game.slug}.jpg)`
+				backgroundImage: `url(/storage/media/covers/${game.slug}.jpg)`
 			}"
 		></div>
-		<img :src="`/storage/games/covers/${game.slug}.jpg`" />
+		<img :src="`/storage/media/covers/${game.slug}.jpg`" />
 		<div class="overlay"></div>
 	</RouterLink>
 </template>
