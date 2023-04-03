@@ -1,35 +1,35 @@
 <template>
 	<LibraryLayout>
-		<LoadingOverlay v-if="loadingGame || game === null" />
-		<div class="game-details-container" v-else>
+		<div class="parallax-container" v-if="game !== null">
+			<div
+				class="parallax-background"
+				:style="{
+					backgroundImage: `url(/storage/media/screenshots/${game.slug}.jpg)`
+				}"
+			></div>
+		</div>
+
+		<div class="game-page" v-if="game !== null">
 			<div class="cover">
 				<img :src="`/storage/media/covers/${game.slug}.jpg`" />
+
+				<a class="button is-primary" v-for="(file, key) in game.files" :key="key"
+					><FeatherIcon type="download" /> {{ file.platform.data.abbreviation }}</a
+				>
 			</div>
 
 			<div class="info">
 				<header>
 					<h1>{{ game.name }}</h1>
-					<div class="divider"></div>
 				</header>
 
-				<div class="game-body">
-					<div class="summary">
-						{{ game.data['summary'] }}
-					</div>
-
-					<div class="buttons">
-						<a
-							v-for="(file, index) in game.files"
-							:key="index"
-							class="button is-primary"
-							:href="`/files/${file.path}`"
-						>
-							Download for {{ file.platform.data.alternative_name }}
-						</a>
-					</div>
+				<div class="summary">
+					{{ game.data.summary }}
 				</div>
 			</div>
 		</div>
+
+		<LoadingOverlay v-if="loadingGame || game === null" />
 	</LibraryLayout>
 </template>
 
@@ -49,81 +49,79 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
-.game-details-container {
-	margin: 2rem;
-	display: flex;
-}
+$parallax-height: 250px;
 
-.cover {
-	padding-right: 1rem;
-	flex: 0 0 auto;
+.parallax-container {
+	position: absolute;
+	z-index: 0;
 
-	& > img {
-		border-radius: 0.5rem;
-	}
-}
+	width: 100%;
+	height: $parallax-height;
 
-.info {
-	flex: 1 1 auto;
+	overflow: hidden;
 
-	& > *:not(:last-child) {
-		margin-bottom: 1rem;
-	}
-}
-
-.game-body {
-	display: flex;
-}
-
-.buttons {
-	display: flex;
-	flex-direction: column;
-	width: 200px;
-	flex: 0 0 auto;
-
-	.button {
+	.parallax-background {
 		width: 100%;
-		justify-content: center;
+		height: 100%;
+		background-color: $primary;
+		background-position: center center;
+		background-size: cover;
+		filter: blur(5px) saturate(90%);
+		opacity: 0.6;
+		transform: scale(1.1);
+	}
+}
 
-		&:not(:last-child) {
+.game-page {
+	display: flex;
+	margin: 0 auto;
+	width: 900px;
+	max-width: 98%;
+
+	.cover {
+		margin-top: 80px;
+		flex: 0 0 auto;
+
+		img {
+			border-radius: 0.25rem;
+			box-shadow: 0 0.1em 1em #242424;
+		}
+
+		*:not(:last-child) {
 			margin-bottom: 0.5rem;
 		}
-	}
-}
 
-.summary {
-	line-height: 1.5;
-	background-color: $black-lighter;
-	padding: 2rem;
-	border-radius: 0.4em;
-	margin-right: 1rem;
-}
-
-.glow {
-	filter: drop-shadow(0 0 0.05em currentColor)
-		drop-shadow(0 0.02em 0.4em transparentize($secondary, 0.5))
-		drop-shadow(0 0.01em 0.25em transparentize($primary, 0.9));
-}
-
-header {
-	width: 100%;
-	margin-top: 1rem;
-	padding-bottom: 0.25rem;
-
-	h1 {
-		font-size: 2rem;
-		font-weight: bold;
-		text-transform: uppercase;
-		color: $white;
+		a {
+			display: flex;
+		}
 	}
 
-	.divider {
-		color: $white;
-		background-color: currentColor;
-		width: 100%;
-		margin-top: 0.5rem;
-		height: 0.3em;
-		border-radius: 20px;
+	.info {
+		margin-left: 3rem;
+		flex: 1 1 auto;
+
+		header,
+		.summary {
+			padding: 1.5rem 0;
+		}
+
+		header {
+			display: flex;
+			justify-content: flex-end;
+			flex-direction: column;
+			height: $parallax-height;
+
+			h1 {
+				font-size: 2.5rem;
+				font-family: $alt-font;
+				font-weight: bold;
+				line-height: 1.2;
+				text-shadow: 0 0.05em 0.3em rgba(0, 0, 0, 0.25);
+			}
+		}
+
+		.summary {
+		}
 	}
 }
 </style>

@@ -9,6 +9,7 @@ import InlineSvg from 'vue-inline-svg'
 
 import './assets/styles/main.scss'
 import '@fontsource/poppins'
+import '@fontsource/poppins/600.css'
 
 const pinia = createPinia()
 const app = createApp(App)
