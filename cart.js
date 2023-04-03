@@ -145,7 +145,7 @@ const downloadFile = (fileUrl, outputPath) => {
 	})
 }
 
-const downloadGameImages = async (game) => {
+const downloadGameCover = async (game) => {
 	const destFolder = path.join(__dirname, '/public/storage/media/covers')
 	fs.mkdirSync(destFolder, { recursive: true })
 
@@ -162,6 +162,34 @@ const downloadGameImages = async (game) => {
 
 		await downloadFile(imageUrl, destPath)
 	}
+}
+
+const downloadGameScreenshot = async (game) => {
+	const destFolder = path.join(__dirname, '/public/storage/media/screenshots')
+	fs.mkdirSync(destFolder, { recursive: true })
+
+	const destPath = path.join(destFolder, `${game.slug}.jpg`)
+
+	if (fs.existsSync(destPath)) return
+
+	await sleep()
+	const response = await igdb
+		.fields('*')
+		.sort('image_id', 'desc')
+		.where(`game = ${game.id}`)
+		.request('/screenshots')
+
+	if (response.data.length > 0) {
+		const imageId = response.data[0]['image_id']
+		const imageUrl = `https://images.igdb.com/igdb/image/upload/t_screenshot_huge/${imageId}.jpg`
+
+		await downloadFile(imageUrl, destPath)
+	}
+}
+
+const downloadGameImages = async (game) => {
+	await downloadGameCover(game)
+	await downloadGameScreenshot(game)
 }
 
 /**
