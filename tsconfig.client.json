@@ -1,0 +1,15 @@
+{
+	"extends": "@vue/tsconfig/tsconfig.web.json",
+	"include": ["client/**/*.ts", "client/**/*.d.ts", "client/**/*.vue", "*.d.ts"],
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./client/*"]
+		}
+	},
+	"references": [
+		{
+			"path": "./tsconfig.node.json"
+		}
+	]
+}
