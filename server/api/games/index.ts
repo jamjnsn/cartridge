@@ -2,14 +2,12 @@ import prisma from '../../utils/prisma'
 import { useMeiliSearch } from '../../../utils/useMeiliSearch'
 
 export default async function (req: any, res: any) {
-	const { search, limit = 10 } = req.query
+	const { search } = req.query
 
-	if (search !== undefined) {
+	if (search !== undefined && search !== '') {
 		const meilisearch = useMeiliSearch()
-		const results = await meilisearch.index('games').search(search, {
-			limit
-		})
-		res.send(results)
+		const results = await meilisearch.index('games').search(search)
+		res.send(results.hits)
 	} else {
 		const games = await prisma.game.findMany()
 		res.send(games)

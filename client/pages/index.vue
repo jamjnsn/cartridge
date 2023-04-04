@@ -1,20 +1,24 @@
 <template>
-	<LibraryLayout>
-		<LoadingOverlay v-if="loadingGames" />
-		<div class="library-container" v-else>
-			<GameLink v-for="(game, index) in games" :key="index" :game="game" />
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
-			<div class="game-spacer"></div>
+	<div id="layout">
+		<LibraryNav id="nav" @search-changed="onSearchChanged" />
+
+		<div
+			id="game-list"
+			:class="{
+				'no-scroll': selectedGame !== undefined
+			}"
+		>
+			<GameList :games="games" v-if="games.length > 0" @game-clicked="onGameClicked" />
+
+			<LoadingOverlay v-if="loadingGames && games.length <= 0" />
+
+			<Transition>
+				<div id="game-view" v-if="selectedGame !== undefined">
+					<GameView :slug="selectedGame.slug" @close-button-clicked="onGameCloseClicked" />
+				</div>
+			</Transition>
 		</div>
-	</LibraryLayout>
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -23,42 +27,70 @@ import type { Game } from '@prisma/client'
 const axios = useAxios()
 
 const loadingGames = ref(true)
+
+const defaultGames: Game[] = []
 const games = ref<Game[]>([])
 
+const selectedGame = ref<Game>()
+
+const onGameClicked = (game: Game) => {
+	selectedGame.value = game
+}
+
+const onSearchChanged = (search: string) => {
+	loadingGames.value = true
+
+	axios
+		.get('/api/games', {
+			params: {
+				search
+			}
+		})
+		.then((res) => {
+			games.value = res.data
+			loadingGames.value = false
+		})
+}
+
+const onGameCloseClicked = () => {
+	selectedGame.value = undefined
+}
+
 onMounted(async () => {
-	await axios.get('/api/games').then((res) => {
-		games.value = res.data
-		loadingGames.value = false
-	})
+	onSearchChanged('')
 })
 </script>
 
 <style scoped lang="scss">
-$game-width: 150px;
-$game-aspect-ratio: calc(4 / 3);
-
-.library-container {
-	overflow-y: auto;
-	padding: 1.5rem;
+#layout {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
+	flex-direction: column;
+	background-color: $black-lighter;
 }
 
-.game,
-.game-spacer {
+#nav {
+	flex: 0 0 auto;
+}
+
+#game-list {
 	flex: 1 1 auto;
+	overflow-y: auto;
 }
 
-.game-spacer {
-	width: calc($game-width + 1rem);
-}
-
-.game {
-	width: $game-width;
-
-	height: calc($game-width * $game-aspect-ratio);
-	margin: 0.5rem;
+#game-view {
+	z-index: 10;
+	position: fixed;
+	top: 80px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	overflow-y: auto;
+	background-color: $black-lighter;
 }
 </style>
 

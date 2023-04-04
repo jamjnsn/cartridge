@@ -1,47 +1,63 @@
 <template>
-	<LibraryLayout>
-		<div class="parallax-container" v-if="game !== null">
-			<div
-				class="parallax-background"
-				:style="{
-					backgroundImage: `url(/storage/media/screenshots/${game.slug}.jpg)`
-				}"
-			></div>
+	<div class="parallax-container" v-if="game !== null">
+		<div
+			class="parallax-background"
+			:style="{
+				backgroundImage: `url(/storage/media/screenshots/${game.slug}.jpg)`
+			}"
+		></div>
+	</div>
+
+	<a class="close-button" @click="$emit('closeButtonClicked')">
+		<FeatherIcon type="x" />
+	</a>
+
+	<div class="game-page" v-if="game !== null">
+		<div class="cover">
+			<img :src="`/storage/media/covers/${game.slug}.jpg`" />
+
+			<a
+				class="button is-primary"
+				v-for="(file, key) in game.files"
+				:key="key"
+				:href="`/files/${file.path}`"
+				><FeatherIcon type="download" /> {{ file.platform.data.abbreviation }}</a
+			>
 		</div>
 
-		<div class="game-page" v-if="game !== null">
-			<div class="cover">
-				<img :src="`/storage/media/covers/${game.slug}.jpg`" />
+		<div class="info">
+			<header>
+				<h1>{{ game.name }}</h1>
+			</header>
 
-				<a class="button is-primary" v-for="(file, key) in game.files" :key="key"
-					><FeatherIcon type="download" /> {{ file.platform.data.abbreviation }}</a
-				>
-			</div>
-
-			<div class="info">
-				<header>
-					<h1>{{ game.name }}</h1>
-				</header>
-
-				<div class="summary">
-					{{ game.data.summary }}
-				</div>
+			<div class="summary">
+				{{ game.data.summary }}
 			</div>
 		</div>
+	</div>
 
-		<LoadingOverlay v-if="loadingGame || game === null" />
-	</LibraryLayout>
+	<LoadingOverlay v-if="loadingGame || game === null" />
 </template>
 
 <script setup lang="ts">
+import { Game } from '.prisma/client'
+
 const route = useRoute()
 const axios = useAxios()
 
 const loadingGame = ref(true)
 const game = ref<any>(null)
 
+const props = defineProps<{
+	slug: string
+}>()
+
+const emit = defineEmits<{
+	(e: 'closeButtonClicked'): void
+}>()
+
 onMounted(async () => {
-	await axios.get(`/api/games/${route.params.slug}`).then((res) => {
+	await axios.get(`/api/games/${props.slug}`).then((res) => {
 		game.value = res.data
 		loadingGame.value = false
 	})
@@ -68,6 +84,23 @@ $parallax-height: 250px;
 		background-size: cover;
 		filter: blur(5px) saturate(90%);
 		opacity: 0.6;
+		transform: scale(1.1);
+	}
+}
+
+.close-button {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	font-size: 2.5rem;
+	color: $white;
+	opacity: 0.8;
+	transition: all 0.1s ease-in-out;
+	transform: scale(1);
+
+	&:hover {
+		text-decoration: none;
+		opacity: 1;
 		transform: scale(1.1);
 	}
 }

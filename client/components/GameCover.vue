@@ -1,11 +1,5 @@
 <template>
-	<RouterLink
-		:to="{
-			name: 'game',
-			params: { slug: game.slug }
-		}"
-		class="game"
-	>
+	<a class="game">
 		<div
 			class="underlay"
 			:style="{
@@ -14,7 +8,7 @@
 		></div>
 		<img :src="`/storage/media/covers/${game.slug}.jpg`" />
 		<div class="overlay"></div>
-	</RouterLink>
+	</a>
 </template>
 
 <script setup lang="ts">

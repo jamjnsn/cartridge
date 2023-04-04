@@ -36,13 +36,15 @@ const onKeyDown = (e: any) => {
 
 var searchTimeout: NodeJS.Timeout | null = null
 
-const onSearchChanged = (event) => {
+const onSearchChanged = () => {
 	if (searchTimeout !== null) {
 		clearTimeout(searchTimeout)
 		searchTimeout = null
 	}
 
-	searchTimeout = setTimeout(updateSearch, 300)
+	searchTimeout = setTimeout(() => {
+		emit('searchChanged', searchQuery.value)
+	}, 300)
 }
 
 const updateSearch = async () => {
@@ -61,6 +63,10 @@ const updateSearch = async () => {
 	}
 }
 
+const emit = defineEmits<{
+	(e: 'searchChanged', search: string): void
+}>()
+
 onMounted(async () => {
 	window.addEventListener('keydown', onKeyDown)
 })
@@ -71,72 +77,66 @@ onUnmounted(() => {
 </script>
 
 <template>
-	<div class="layout">
-		<nav>
-			<div>
-				<router-link :to="{ name: 'home' }" class="home-link">
-					<inline-svg :src="logo" class="logo" />
-				</router-link>
+	<nav>
+		<div>
+			<router-link :to="{ name: 'home' }" class="home-link">
+				<inline-svg :src="logo" class="logo" />
+			</router-link>
+		</div>
+
+		<div
+			class="search-container"
+			@click="searchInput?.focus()"
+			:class="{ 'is-active': searchInputFocused }"
+		>
+			<div class="search-icon">
+				<feather-icon type="search" />
 			</div>
 
-			<div
-				class="search-container"
-				@click="searchInput?.focus()"
-				:class="{ 'is-active': searchInputFocused }"
-			>
-				<div class="search-icon">
-					<feather-icon type="search" />
-				</div>
+			<input
+				class="search-input"
+				v-model="searchQuery"
+				type="text"
+				ref="searchInput"
+				placeholder="Search..."
+				@focus="searchInputFocused = true"
+				@blur="searchInputFocused = false"
+				@keyup="onSearchChanged"
+			/>
 
-				<input
-					class="search-input"
-					v-model="searchQuery"
-					type="text"
-					ref="searchInput"
-					placeholder="Search..."
-					@focus="searchInputFocused = true"
-					@blur="searchInputFocused = false"
-					@keyup="onSearchChanged"
-				/>
-
-				<Transition>
-					<div class="suggestions" v-if="searchResults.length > 0 && searchInputFocused">
-						<RouterLink
-							v-for="suggestion in searchResults"
-							:key="suggestion.id"
-							:to="{
-								name: 'game',
-								params: { slug: suggestion.slug }
-							}"
-						>
-							{{ suggestion.name }}
-						</RouterLink>
-					</div>
-				</Transition>
-			</div>
-
-			<div class="menu-container">
-				<button class="menu-button" :class="{ 'is-active': menuIsOpen }" @click="toggleMenu">
-					<MenuIcon :is-open="menuIsOpen" />
-				</button>
-
-				<div class="menu" v-if="menuIsOpen">
-					<template v-if="user.isAdmin">
-						<router-link :to="{ name: 'admin-dashboard' }" class="button is-full-width"
-							><feather-icon type="key" /> Admin</router-link
-						>
-					</template>
-					<router-link :to="{ name: 'logout' }" class="button is-bad is-full-width"
-						><feather-icon type="log-out" /> Logout</router-link
+			<Transition>
+				<div class="suggestions" v-if="searchResults.length > 0 && searchInputFocused">
+					<RouterLink
+						v-for="suggestion in searchResults"
+						:key="suggestion.id"
+						:to="{
+							name: 'game',
+							params: { slug: suggestion.slug }
+						}"
 					>
+						{{ suggestion.name }}
+					</RouterLink>
 				</div>
-			</div>
-		</nav>
+			</Transition>
+		</div>
 
-		<main>
-			<slot />
-		</main>
-	</div>
+		<div class="menu-container">
+			<button class="menu-button" :class="{ 'is-active': menuIsOpen }" @click="toggleMenu">
+				<MenuIcon :is-open="menuIsOpen" />
+			</button>
+
+			<div class="menu" v-if="menuIsOpen">
+				<template v-if="user.isAdmin">
+					<router-link :to="{ name: 'admin-dashboard' }" class="button is-full-width"
+						><feather-icon type="key" /> Admin</router-link
+					>
+				</template>
+				<router-link :to="{ name: 'logout' }" class="button is-bad is-full-width"
+					><feather-icon type="log-out" /> Logout</router-link
+				>
+			</div>
+		</div>
+	</nav>
 </template>
 
 <style scoped lang="scss">
