@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import { Game } from '.prisma/client'
 import logo from '@/assets/images/logo.svg'
+
+const axios = useAxios()
 
 const searchInput = ref<HTMLInputElement | null>(null)
 const searchInputFocused = ref(false)
 const menuIsOpen = ref(false)
-const searchQuery = ''
+const searchQuery = ref('')
+
+const searchResults = ref<any[]>([])
 
 const user = useUserStore()
 
@@ -26,6 +31,33 @@ const onKeyDown = (e: any) => {
 			e.preventDefault()
 			searchInput.value?.blur()
 			break
+	}
+}
+
+var searchTimeout: NodeJS.Timeout | null = null
+
+const onSearchChanged = (event) => {
+	if (searchTimeout !== null) {
+		clearTimeout(searchTimeout)
+		searchTimeout = null
+	}
+
+	searchTimeout = setTimeout(updateSearch, 300)
+}
+
+const updateSearch = async () => {
+	if (searchQuery.value === '') {
+		searchResults.value = []
+	} else {
+		searchResults.value = await axios
+			.get('/api/games', {
+				params: {
+					search: searchQuery.value
+				}
+			})
+			.then((res) => {
+				return res.data.hits
+			})
 	}
 }
 
@@ -64,7 +96,23 @@ onUnmounted(() => {
 					placeholder="Search..."
 					@focus="searchInputFocused = true"
 					@blur="searchInputFocused = false"
+					@keyup="onSearchChanged"
 				/>
+
+				<Transition>
+					<div class="suggestions" v-if="searchResults.length > 0 && searchInputFocused">
+						<RouterLink
+							v-for="suggestion in searchResults"
+							:key="suggestion.id"
+							:to="{
+								name: 'game',
+								params: { slug: suggestion.slug }
+							}"
+						>
+							{{ suggestion.name }}
+						</RouterLink>
+					</div>
+				</Transition>
 			</div>
 
 			<div class="menu-container">
@@ -93,6 +141,37 @@ onUnmounted(() => {
 
 <style scoped lang="scss">
 $menu-height: 80px;
+
+.suggestions {
+	position: absolute;
+	width: 100%;
+	top: 100%;
+	left: 0;
+
+	margin-top: 0.5rem;
+	padding: 0.5rem;
+	background-color: $grey-darker;
+	border-radius: 0.3rem;
+
+	box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.5);
+
+	a {
+		display: block;
+		background-color: $grey-dark;
+		border-radius: 0.2rem;
+		padding: 0.5rem 0.75rem;
+		color: $white;
+
+		&:not(:last-child) {
+			margin-bottom: 0.25rem;
+		}
+
+		&:hover {
+			text-decoration: none;
+			background-color: $primary;
+		}
+	}
+}
 
 .layout {
 	display: flex;
@@ -165,7 +244,6 @@ nav {
 			outline-color: $primary;
 			box-shadow: 0 0.05em 1em $primary;
 			outline-color: $secondary;
-			transform: scale(1.005);
 		}
 
 		.search-icon {

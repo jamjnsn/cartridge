@@ -1,6 +1,6 @@
 import prisma from '../../utils/prisma'
 import { getPrismaErrorCode, sendError } from '../../utils/error'
-import { useMeiliSearch } from '../../utils/useMeiliSearch'
+import { useMeiliSearch } from '../../../utils/useMeiliSearch'
 
 export default async function (req: any, res: any) {
 	const { query } = req.query
