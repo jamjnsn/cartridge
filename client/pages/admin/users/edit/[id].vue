@@ -28,8 +28,12 @@ onMounted(async () => {
 
 <template>
 	<AdminLayout>
+		<template #header>
+			<h1>
+				Editing <template v-if="user !== undefined">{{ user.username }}</template>
+			</h1>
+		</template>
 		<template v-if="!loadingUser">
-			<h1 class="title">Editing {{ user?.username }}</h1>
 			<UserForm :user="user" @submit="submit"></UserForm>
 		</template>
 	</AdminLayout>

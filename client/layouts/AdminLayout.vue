@@ -4,36 +4,38 @@
 			<div class="sidebar-start">
 				<img src="/images/logo-full.png" class="logo" />
 
-				<!-- <router-link :to="{ name: 'admin-library' }" class="button is-full-width is-primary">
-					<feather-icon type="book" /> Library
-				</router-link> -->
-
-				<router-link :to="{ name: 'admin-users' }" class="button is-full-width is-primary">
+				<router-link :to="{ name: 'admin-users' }">
 					<feather-icon type="users" /> Users
 				</router-link>
 			</div>
 
 			<div class="sidebar-end">
-				<router-link :to="{ name: 'home' }" class="button is-full-width">
+				<router-link :to="{ name: 'home' }">
 					<feather-icon type="arrow-left" /> Back to Site
 				</router-link>
-				<router-link :to="{ name: 'logout' }" class="button is-bad is-full-width">
-					<feather-icon type="log-out" /> Logout
-				</router-link>
+				<router-link :to="{ name: 'logout' }"> <feather-icon type="log-out" /> Logout </router-link>
 			</div>
 		</div>
 
 		<main>
+			<header class="layout-header">
+				<slot name="header" />
+			</header>
+
+			<hr />
+
 			<slot />
 		</main>
 	</div>
 </template>
 
-<script setup lang="ts">
-import logo from '@/assets/images/logo.svg'
-</script>
-
 <style lang="scss" scoped>
+hr {
+	height: 3px;
+	border-radius: 10px;
+	margin-bottom: 1.5rem;
+}
+
 .layout {
 	display: flex;
 	flex-direction: row;
@@ -49,28 +51,66 @@ import logo from '@/assets/images/logo.svg'
 	background-color: $black-lighter;
 	justify-content: space-between;
 
-	.button:not(:last-child) {
-		margin-bottom: 0.5rem;
+	.logo {
+		padding: 1rem;
+		width: 100%;
+		height: auto;
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		padding: 0.35rem 1rem;
+		color: $white-dark;
+
+		&:hover {
+			text-decoration: none;
+			background-color: lighten($black-lighter, 5%);
+		}
+
+		.vue-feather {
+			color: transparentize($white, 0.5);
+			margin-right: 0.5em;
+		}
 	}
 
 	.sidebar-end {
+		background-color: lighten($black-lighter, 5%);
+		padding: 0.5rem 0;
 		justify-self: flex-end;
-	}
-}
 
-.logo {
-	width: 100%;
-	height: auto;
-	margin-bottom: 2rem;
+		a {
+			&:hover {
+				background-color: lighten($black-lighter, 8%);
+			}
+		}
+	}
 }
 
 .sidebar,
 main {
-	padding: 1.25rem;
 	overflow-y: auto;
 }
 
 main {
 	flex: 1 1 auto;
+	padding: 2.5rem;
+}
+</style>
+
+<style lang="scss">
+.layout-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	h1 {
+		font-size: 2rem;
+		font-family: $alt-font;
+		font-weight: bold;
+	}
+
+	.controls {
+	}
 }
 </style>

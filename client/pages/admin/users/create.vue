@@ -21,7 +21,9 @@ const submit = async (data: any) => {
 
 <template>
 	<AdminLayout>
-		<h1 class="title">Creating a User</h1>
+		<template #header>
+			<h1>Create a User</h1>
+		</template>
 		<UserForm @submit="submit"></UserForm>
 	</AdminLayout>
 </template>

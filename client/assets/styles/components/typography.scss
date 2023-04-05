@@ -3,10 +3,8 @@
 	font-family: $alt-font;
 	font-weight: bold;
 
-	color: $white;
-
-	padding-bottom: 0.25rem;
-	border-bottom: 2px solid currentColor;
+	color: $white-dark;
+	line-height: 1;
 
 	&:not(:last-child) {
 		margin-bottom: 1rem;

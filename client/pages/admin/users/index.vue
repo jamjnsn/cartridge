@@ -35,17 +35,19 @@ onMounted(async () => {
 
 <template>
 	<AdminLayout>
-		<h1 class="title">Users</h1>
-		<div class="buttons">
-			<RouterLink
-				:to="{
-					name: 'admin-user-create'
-				}"
-				class="button is-small"
-			>
-				<feather-icon type="plus" /> Create
-			</RouterLink>
-		</div>
+		<template #header>
+			<h1>Users</h1>
+			<div class="buttons">
+				<RouterLink
+					:to="{
+						name: 'admin-user-create'
+					}"
+					class="button is-small"
+				>
+					<feather-icon type="plus" /> Create
+				</RouterLink>
+			</div>
+		</template>
 
 		<table>
 			<thead>

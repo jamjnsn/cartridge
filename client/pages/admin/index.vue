@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-	<AdminLayout> Welcome! </AdminLayout>
+	<AdminLayout> <template #header>Dashboard</template> Welcome!</AdminLayout>
 </template>
 
 <route>
