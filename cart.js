@@ -233,6 +233,12 @@ const scanFolder = async (folderName) => {
 
 			if (gameData === null) {
 				console.log(`No match found for ${file}`)
+				await prisma.unmatchedFiles.create({
+					data: {
+						path: gamePath,
+						platformId: platform.id
+					}
+				})
 				continue
 			}
 
@@ -293,6 +299,9 @@ const cleanFileName = (fileName) => {
 }
 
 const main = async () => {
+	// Clear unmatched files
+	await prisma.unmatchedFiles.deleteMany({})
+
 	console.log('Starting scan')
 
 	for (const file of fs.readdirSync(gamesPath)) {
@@ -308,5 +317,7 @@ const main = async () => {
 	console.log('Updating MeiliSearch')
 	await updateSearchIndexes()
 }
+
+module.exports = main
 
 main()

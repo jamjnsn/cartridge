@@ -36,7 +36,8 @@ model Platform {
     games GamePlatform[]
     files File[]
 
-    data Json?
+    data           Json?
+    UnmatchedFiles UnmatchedFiles[]
 
     @@map("platforms")
 }
@@ -73,4 +74,15 @@ model File {
 
     @@id([gameId, platformId])
     @@map("files")
+}
+
+model UnmatchedFiles {
+    id String @id @default(cuid())
+
+    path String @unique
+
+    platform   Platform @relation(fields: [platformId], references: [id])
+    platformId Int
+
+    @@map("unmatched_files")
 }

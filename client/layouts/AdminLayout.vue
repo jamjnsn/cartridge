@@ -4,6 +4,10 @@
 			<div class="sidebar-start">
 				<img src="/images/logo-full.png" class="logo" />
 
+				<router-link :to="{ name: 'admin-library' }">
+					<feather-icon type="book" /> Library
+				</router-link>
+
 				<router-link :to="{ name: 'admin-users' }">
 					<feather-icon type="users" /> Users
 				</router-link>
