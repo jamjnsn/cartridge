@@ -1,9 +1,15 @@
 services:
+    app:
+        build: ./
+        ports:
+            - 8060:5173
+        volumes:
+            - /home/jamie/Games/ROMs:/games
+        env_file:
+            - .env.docker
     db:
         image: postgres
         restart: unless-stopped
-        ports:
-            - 5432:5432
         environment:
             POSTGRES_DB: ${DB_DATABASE}
             POSTGRES_USER: ${DB_USER}
@@ -16,5 +22,3 @@ services:
     meilisearch:
         image: getmeili/meilisearch:v1.0
         restart: unless-stopped
-        ports:
-            - 7700:7700
