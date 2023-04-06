@@ -1,18 +1,16 @@
 import { PrismaClient } from '@prisma/client'
-import { hashSync, genSaltSync } from 'bcryptjs'
+import { hashPassword } from '../server/utils/user/hashPassword'
 
 const prisma = new PrismaClient()
 
 async function main() {
-	const salt = genSaltSync()
-
 	const admin = await prisma.user.upsert({
 		where: { id: '1' },
 		update: {},
 		create: {
 			id: '1',
 			username: 'admin',
-			password: hashSync('hunter2', salt),
+			password: hashPassword('hunter2'),
 			isAdmin: true
 		}
 	})
