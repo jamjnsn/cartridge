@@ -23,8 +23,8 @@ model User {
 model Session {
     id String @id @default(cuid())
 
-    token   String   @unique
-    expires DateTime
+    token     String   @unique
+    createdAt DateTime @default(now()) @map("created_at")
 
     userId String @map("user_id")
     user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
