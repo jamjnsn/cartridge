@@ -6,14 +6,18 @@
 		"dev": "nuxt dev",
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
-		"postinstall": "nuxt prepare"
+		"postinstall": "nuxt prepare",
+		"lint": "eslint ."
 	},
 	"prisma": {
 		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
 	},
 	"devDependencies": {
+		"@nuxt/eslint-config": "^0.1.1",
 		"@types/bcryptjs": "^2.4.2",
 		"@types/node": "^18.15.11",
+		"eslint": "^8.37.0",
+		"eslint-config-prettier": "^8.8.0",
 		"nuxt": "^3.3.3",
 		"prisma": "^4.12.0",
 		"ts-node": "^10.9.1",
