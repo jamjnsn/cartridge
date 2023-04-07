@@ -1,5 +1,9 @@
 <script setup lang="ts">
+const isLoading = ref(false)
+
 const tryLogin = async (event: any) => {
+	isLoading.value = true
+
 	const body = {
 		username: event.target.elements.username.value,
 		password: event.target.elements.password.value
@@ -32,18 +36,34 @@ definePageMeta({
 </script>
 
 <template>
-	<form @submit.prevent="tryLogin">
-		<h1>Login</h1>
-		<input
-			name="username"
-			type="text"
-			placeholder="Username"
-		/>
-		<input
-			name="password"
-			type="password"
-			placeholder="Password"
-		/>
-		<button>Login</button>
-	</form>
+	<UiPanel color="primary">
+		<template #header><h1>Login</h1></template>
+
+		<form @submit.prevent="tryLogin">
+			<UiField label="Username">
+				<UiInput
+					name="username"
+					icon="user"
+				/>
+			</UiField>
+
+			<UiField label="Password">
+				<UiInput
+					name="password"
+					type="password"
+					icon="lock"
+				/>
+			</UiField>
+
+			<UiButtonGroup>
+				<UiButton
+					color="primary"
+					icon="play"
+					:loading="isLoading"
+				>
+					Start
+				</UiButton>
+			</UiButtonGroup>
+		</form>
+	</UiPanel>
 </template>

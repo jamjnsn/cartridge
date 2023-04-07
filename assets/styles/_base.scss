@@ -5,8 +5,7 @@
 
 html {
 	height: 100%;
-	background-color: $black;
-
+	background-color: #000000;
 	text-rendering: optimizeLegibility;
 	text-size-adjust: 100%;
 	-moz-osx-font-smoothing: grayscale;
@@ -15,10 +14,10 @@ html {
 
 body {
 	min-height: 100%;
-	color: $white;
+	color: $white-dark;
 	font-family: $main-font;
 	font-size: 16px;
-	line-height: 1.5;
+	line-height: 1;
 }
 
 article,
@@ -37,6 +36,7 @@ optgroup,
 select,
 textarea {
 	font-family: $main-font;
+	font-size: 1rem;
 }
 
 code,
