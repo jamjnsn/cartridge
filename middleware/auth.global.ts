@@ -8,11 +8,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 		const token = useCookie('token')
 
 		if (token.value !== null) {
-			const { data: user } = await useFetch<User>('/api/auth/me', {
-				headers: {
-					authorization: `Bearer ${token.value}`
-				}
-			})
+			const { data: user } = await useApiFetch<User>('/api/auth/me')
 
 			if (user.value !== null) {
 				currentUser.value = {
