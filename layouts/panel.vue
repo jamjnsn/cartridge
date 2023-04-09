@@ -1,6 +1,8 @@
 <template>
 	<div class="layout-panel">
-		<slot />
+		<div class="layout-panel__content">
+			<slot />
+		</div>
 	</div>
 </template>
 
@@ -11,5 +13,11 @@
 	justify-content: center;
 	width: 100%;
 	height: 100%;
+
+	&__content {
+		width: 600px;
+		max-width: 100%;
+		margin: 1rem;
+	}
 }
 </style>

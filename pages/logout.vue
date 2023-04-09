@@ -3,6 +3,10 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+	title: 'Logout'
+})
+
 definePageMeta({
 	middleware: ['require-login']
 })

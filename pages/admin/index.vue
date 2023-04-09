@@ -2,6 +2,10 @@
 definePageMeta({
 	layout: 'admin'
 })
+
+useHead({
+	title: 'Dashboard'
+})
 </script>
 
 <template>

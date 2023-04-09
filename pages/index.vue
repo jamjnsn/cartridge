@@ -12,12 +12,9 @@ import { User } from '@prisma/client'
 const user = useUser()
 
 definePageMeta({
-	middleware: ['require-login']
+	middleware: ['require-login'],
+	layout: 'panel'
 })
 </script>
 
-<style scoped lang="scss">
-div {
-	width: 500px;
-}
-</style>
+<style scoped lang="scss"></style>

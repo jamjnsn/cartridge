@@ -31,12 +31,20 @@ const tryLogin = async (event: any) => {
 }
 
 definePageMeta({
-	middleware: ['require-guest']
+	middleware: ['require-guest'],
+	layout: 'panel'
+})
+
+useHead({
+	title: 'Login'
 })
 </script>
 
 <template>
-	<UiPanel color="primary">
+	<UiPanel
+		color="primary"
+		class="login-panel"
+	>
 		<template #header><h1>Login</h1></template>
 
 		<form @submit.prevent="tryLogin">
@@ -67,3 +75,11 @@ definePageMeta({
 		</form>
 	</UiPanel>
 </template>
+
+<style lang="scss">
+.login-panel {
+	width: 300px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+</style>
