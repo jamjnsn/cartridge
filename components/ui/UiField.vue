@@ -10,10 +10,10 @@ withDefaults(
 </script>
 
 <template>
-	<div class="ui-field">
+	<div class="field">
 		<label
 			v-if="label !== undefined"
-			class="ui-field-label"
+			class="field__label"
 			>{{ label }}</label
 		>
 		<slot />
@@ -21,13 +21,13 @@ withDefaults(
 </template>
 
 <style lang="scss">
-.ui-field {
+.field {
 	&:not(:last-child) {
 		margin-bottom: 1rem;
 	}
 }
 
-.ui-field-label {
+.field__label {
 	display: block;
 	font-size: 0.9em;
 	padding-left: 0.1em;

@@ -1,48 +1,47 @@
-$white: hsl(0, 0%, 99%);
-$white-dark: hsl(0, 0%, 98%);
-$white-darker: hsl(0, 0%, 96%);
+$white: hsl(0deg 0% 99%);
+$white-dark: hsl(0deg 0% 98%);
+$white-darker: hsl(0deg 0% 96%);
 
-$black: hsl(0, 0%, 4%);
-$black-light: hsl(0, 0%, 7%);
-$black-lighter: hsl(0, 0%, 14%);
+$black: hsl(0deg 0% 4%);
+$black-light: hsl(0deg 0% 7%);
+$black-lighter: hsl(0deg 0% 14%);
 
-$grey-darkest: hsl(0, 0%, 13%);
-$grey-darker: hsl(0, 0%, 21%);
-$grey-dark: hsl(0, 0%, 29%);
-$grey: hsl(0, 0%, 48%);
-$grey-light: hsl(0, 0%, 71%);
-$grey-lighter: hsl(0, 0%, 86%);
-$grey-lightest: hsl(0, 0%, 93%);
+$grey-darkest: hsl(0deg 0% 13%);
+$grey-darker: hsl(0deg 0% 21%);
+$grey-dark: hsl(0deg 0% 29%);
+$grey: hsl(0deg 0% 48%);
+$grey-light: hsl(0deg 0% 71%);
+$grey-lighter: hsl(0deg 0% 86%);
+$grey-lightest: hsl(0deg 0% 93%);
 
-$orange: hsl(14, 100%, 53%);
-$yellow: hsl(44, 100%, 77%);
-$green: hsl(153, 53%, 43%);
-$turquoise: hsl(171, 100%, 41%);
-$cyan: hsl(207, 61%, 53%);
-$blue: hsl(229, 53%, 53%);
-$purple: hsl(271, 100%, 71%);
-$red: hsl(348, 86%, 57%);
+$orange: hsl(14deg 100% 53%);
+$yellow: hsl(44deg 100% 77%);
+$green: hsl(153deg 53% 43%);
+$turquoise: hsl(171deg 100% 41%);
+$cyan: hsl(207deg 61% 53%);
+$blue: hsl(229deg 53% 53%);
+$purple: hsl(271deg 100% 71%);
+$red: hsl(348deg 86% 57%);
 
-$primary: hsl(246, 97%, 66%);
-$secondary: hsl(271, 100%, 71%);
+$primary: hsl(246deg 97% 66%);
+$secondary: hsl(271deg 100% 71%);
 
 $danger: $red;
 $success: $green;
 $warning: $yellow;
 $info: $blue;
-
 $link-color: $blue;
 
 $fancy-gradient: linear-gradient(
 	25deg,
-	rgba(102, 86, 252, 1) 0%,
-	rgba(102, 86, 252, 1) 10%,
-	rgba(147, 86, 252, 1) 50%,
-	rgba(204, 84, 247, 1) 100%
+	rgb(102 86 252 / 100%) 0%,
+	rgb(102 86 252 / 100%) 10%,
+	rgb(147 86 252 / 100%) 50%,
+	rgb(204 84 247 / 100%) 100%
 );
 
-$main-font: 'Lato', 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans',
-	'Trebuchet MS', Verdana, 'Verdana Ref', sans-serif;
+$main-font: 'Lato', 'Segoe UI', candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitstream Vera Sans',
+	'Trebuchet MS', verdana, 'Verdana Ref', sans-serif;
 $alt-font: 'Poppins', $main-font;
 
 $monospace-font: monospace;

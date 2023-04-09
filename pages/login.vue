@@ -55,7 +55,7 @@ definePageMeta({
 				/>
 			</UiField>
 
-			<UiButtonGroup>
+			<UiGroup>
 				<UiButton
 					color="primary"
 					icon="play"
@@ -63,7 +63,7 @@ definePageMeta({
 				>
 					Start
 				</UiButton>
-			</UiButtonGroup>
+			</UiGroup>
 		</form>
 	</UiPanel>
 </template>

@@ -23,13 +23,13 @@ withDefaults(
 
 <template>
 	<button
-		class="ui-button"
+		class="button"
 		:class="[
-			`is-size-${size}`,
-			`is-color-${color}`,
-			centered ? 'is-centered' : '',
-			fullwidth ? 'is-full-width' : '',
-			loading ? 'is-loading' : ''
+			`-color-${color}`,
+			`-size-${size}`,
+			centered ? '-centered' : '',
+			fullwidth ? '-full-width' : '',
+			loading ? '-loading' : ''
 		]"
 		:disabled="disabled || loading"
 	>
@@ -38,9 +38,9 @@ withDefaults(
 			:type="icon"
 		/>
 
-		<div class="ui-button-content"><slot /></div>
+		<div class="button__content"><slot /></div>
 
-		<div class="ui-button-loading-container">
+		<div class="button__loading">
 			<Transition>
 				<UiSpinner
 					v-if="loading"
@@ -52,23 +52,17 @@ withDefaults(
 </template>
 
 <style lang="scss">
-.ui-button-content {
-	display: flex;
-	align-items: center;
-}
-
-.ui-button {
+.button {
 	display: inline-flex;
 	align-items: center;
-	background-color: $grey-dark;
 	border-radius: 0.3em;
 	padding: calc(0.75em - 1px) calc(1em - 1px);
 	box-shadow: none;
 	transition: all 0.1s ease;
-	color: inherit;
 	cursor: pointer;
 	outline: 0;
 	border: 0;
+	color: $white;
 
 	& > * {
 		opacity: 1;
@@ -76,55 +70,8 @@ withDefaults(
 	}
 
 	& > *:not(:last-child),
-	& > .ui-icon {
+	& > .icon {
 		margin-right: 0.25rem;
-	}
-
-	&.is-loading {
-		& > *:not(.ui-button-loading-container) {
-			opacity: 0;
-		}
-	}
-
-	&:hover {
-		background-color: lighten($grey-dark, 4%);
-		text-decoration: none;
-	}
-
-	&.is-size-small {
-		font-size: 0.8em;
-	}
-
-	&.is-color-primary {
-		background-color: $primary;
-
-		&:hover {
-			background-color: lighten($primary, 3%);
-		}
-	}
-
-	&.is-color-ghost {
-		background-color: transparent;
-
-		&:hover {
-			background-color: $black-lighter;
-		}
-	}
-
-	&.is-color-danger {
-		background-color: $danger;
-
-		&:hover {
-			background-color: lighten($danger, 3%);
-		}
-	}
-
-	&.is-color-success {
-		background-color: $success;
-
-		&:hover {
-			background-color: lighten($success, 3%);
-		}
 	}
 
 	&:disabled {
@@ -136,17 +83,73 @@ withDefaults(
 		}
 	}
 
-	&.is-full-width {
+	&.-loading {
+		& > *:not(.button__loading) {
+			opacity: 0;
+		}
+	}
+
+	&.size-small {
+		font-size: 0.8em;
+	}
+
+	&.-color-default {
+		background-color: $grey-dark;
+
+		&:hover {
+			background-color: lighten($grey-dark, 4%);
+			text-decoration: none;
+		}
+	}
+
+	&.-color-primary {
+		background-color: $primary;
+
+		&:hover {
+			background-color: lighten($primary, 3%);
+		}
+	}
+
+	&.-color-ghost {
+		background-color: transparent;
+
+		&:hover {
+			background-color: $black-lighter;
+		}
+	}
+
+	&.-color-danger {
+		background-color: $danger;
+
+		&:hover {
+			background-color: lighten($danger, 3%);
+		}
+	}
+
+	&.-color-success {
+		background-color: $success;
+
+		&:hover {
+			background-color: lighten($success, 3%);
+		}
+	}
+
+	&.-full-width {
 		display: flex;
 		width: 100%;
 	}
 
-	&.is-centered {
+	&.-centered {
 		justify-content: center;
 	}
 }
 
-.ui-button-loading-container {
+.button__content {
+	display: flex;
+	align-items: center;
+}
+
+.button__loading {
 	display: flex;
 	align-items: center;
 	justify-content: center;

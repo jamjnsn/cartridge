@@ -11,18 +11,18 @@ withDefaults(
 
 <template>
 	<div
-		class="ui-button-group"
-		:class="`is-orientation-${orientation}`"
+		class="group"
+		:class="`-${orientation}`"
 	>
 		<slot />
 	</div>
 </template>
 
 <style lang="scss">
-.ui-button-group {
+.group {
 	display: flex;
 
-	&.is-orientation-horizontal {
+	&.-horizontal {
 		flex-direction: row;
 
 		&:not(:last-child) {
@@ -30,7 +30,7 @@ withDefaults(
 		}
 	}
 
-	&.is-orientation-vertical {
+	&.-vertical {
 		flex-direction: column;
 
 		&:not(:last-child) {

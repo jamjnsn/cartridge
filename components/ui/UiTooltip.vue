@@ -8,18 +8,18 @@ withDefaults(
 </script>
 
 <template>
-	<div class="ui-tooltip">
-		<div class="ui-tooltip-content">
+	<div class="tooltip">
+		<div class="tooltip__content">
 			{{ label }}
 		</div>
 		<slot />
 	</div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 $tooltip-size: 5px;
 
-.ui-tooltip {
+.tooltip {
 	width: auto;
 	display: inline-flex;
 
@@ -31,7 +31,7 @@ $tooltip-size: 5px;
 	}
 }
 
-.ui-tooltip-content {
+.tooltip__content {
 	opacity: 0;
 	min-width: 50px;
 	text-align: center;

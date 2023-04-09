@@ -27,14 +27,14 @@ const updateInput = (event: Event) => {
 
 <template>
 	<div
-		class="ui-input"
+		class="input"
 		:class="{
-			'is-focused': isFocused
+			'-focused': isFocused
 		}"
 	>
 		<div
 			v-if="icon"
-			class="ui-input-icon"
+			class="input__icon"
 		>
 			<UiIcon :type="icon" />
 		</div>
@@ -52,7 +52,7 @@ const updateInput = (event: Event) => {
 		<Transition>
 			<div
 				v-if="clearable && currentValue !== ''"
-				class="ui-input-clear"
+				class="input__clear"
 				@click="currentValue = ''"
 			>
 				<UiIcon type="x-circle" />
@@ -61,15 +61,8 @@ const updateInput = (event: Event) => {
 	</div>
 </template>
 
-<style scoped lang="scss">
-input {
-	flex: 1 1 auto;
-	background: none;
-	display: block;
-	color: currentColor;
-}
-
-.ui-input {
+<style lang="scss">
+.input {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -86,13 +79,20 @@ input {
 	outline: 1px solid $grey-dark;
 	transition: all 0.1s ease-in-out;
 
-	&.is-focused {
+	& > input {
+		flex: 1 1 auto;
+		background: none;
+		display: block;
+		color: currentColor;
+	}
+
+	&.-focused {
 		outline: 1px solid $primary;
 		color: $white-dark;
 	}
 }
 
-.ui-input-clear {
+.input__clear {
 	cursor: pointer;
 	display: flex;
 	align-items: center;
@@ -100,7 +100,7 @@ input {
 	margin-left: 0.25em;
 }
 
-.ui-input-icon {
+.input__icon {
 	display: flex;
 	align-items: center;
 	margin-right: 0.25em;

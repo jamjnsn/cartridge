@@ -1,36 +1,37 @@
 <template>
-	<div class="admin-layout">
-		<nav class="admin-nav">
-			<div class="admin-nav-start">
+	<div class="layout-admin">
+		<nav class="layout-admin__nav">
+			<div class="layout-admin__nav-start">
 				<img
 					src="/images/logo-full.png"
-					class="logo"
+					class="layout-admin__nav-logo"
 				/>
 
-				<NuxtLink to="/"><UiIcon type="users" /> Users</NuxtLink>
+				<NuxtLink to="/admin"><UiIcon type="home" /> Dashboard</NuxtLink>
+				<NuxtLink to="/admin/users"><UiIcon type="users" /> Users</NuxtLink>
 			</div>
 
-			<div class="admin-nav-end">
+			<div class="layout-admin__nav-end">
 				<NuxtLink to="/"><UiIcon type="arrow-left" /> Back to Site</NuxtLink>
 				<NuxtLink to="/logout"><UiIcon type="log-out" /> Logout</NuxtLink>
 			</div>
 		</nav>
 
-		<div class="admin-page">
+		<div class="layout-admin__page">
 			<slot />
 		</div>
 	</div>
 </template>
 
-<style scoped lang="scss">
-.admin-layout {
+<style lang="scss">
+.layout-admin {
 	width: 100%;
 	height: 100%;
 
 	display: flex;
 }
 
-.admin-nav {
+.layout-admin__nav {
 	flex: 0 0 auto;
 	width: 250px;
 	max-width: 20%;
@@ -39,10 +40,25 @@
 	flex-direction: column;
 	justify-content: space-between;
 
-	.logo {
+	&-logo {
 		display: block;
 		width: 100%;
 		padding: 1rem;
+	}
+
+	&-start,
+	&-end {
+		padding: 1rem 0;
+	}
+
+	&-end {
+		background-color: lighten($black-lighter, 5%);
+
+		a {
+			&:hover {
+				background-color: lighten($black-lighter, 8%);
+			}
+		}
 	}
 
 	a {
@@ -54,30 +70,15 @@
 			background-color: lighten($black-lighter, 5%);
 		}
 
-		.ui-icon {
+		.icon {
 			margin-right: 0.4em;
 			color: transparentize($white, 0.5);
 		}
 	}
 }
 
-.admin-page {
+.layout-admin__page {
 	flex: 1 1 auto;
 	padding: 2rem;
-}
-
-.admin-nav-start,
-.admin-nav-end {
-	padding: 1rem 0;
-}
-
-.admin-nav-end {
-	background-color: lighten($black-lighter, 5%);
-
-	a {
-		&:hover {
-			background-color: lighten($black-lighter, 8%);
-		}
-	}
 }
 </style>

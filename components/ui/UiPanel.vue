@@ -11,23 +11,23 @@ withDefaults(
 
 <template>
 	<div
-		class="ui-panel"
-		:class="`is-color-${color}`"
+		class="panel"
+		:class="`-color-${color}`"
 	>
 		<header
 			v-if="$slots.header"
-			class="ui-panel-header"
+			class="panel__header"
 		>
 			<slot name="header" />
 		</header>
 
-		<div class="ui-panel-body">
+		<div class="panel__body">
 			<slot />
 		</div>
 
 		<footer
 			v-if="$slots.footer"
-			class="ui-panel-footer"
+			class="panel__footer"
 		>
 			<slot name="footer" />
 		</footer>
@@ -37,12 +37,12 @@ withDefaults(
 <style lang="scss">
 $border-radius: 0.4em;
 
-.ui-panel {
+.panel {
 	width: 100%;
 	background-color: $black-light;
 
-	&.is-color-primary {
-		.ui-panel-header {
+	&.-color-primary {
+		.panel__header {
 			background-color: $primary;
 		}
 	}
@@ -58,13 +58,13 @@ $border-radius: 0.4em;
 	}
 }
 
-.ui-panel-header,
-.ui-panel-footer,
-.ui-panel-body {
+.panel__header,
+.panel__footer,
+.panel__body {
 	padding: 1rem;
 }
 
-.ui-panel-header {
+.panel__header {
 	background-color: $grey-dark;
 
 	h1 {
@@ -72,7 +72,7 @@ $border-radius: 0.4em;
 	}
 }
 
-.ui-panel-footer {
+.panel__footer {
 	background-color: $grey-darker;
 }
 </style>

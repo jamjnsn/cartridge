@@ -7,7 +7,10 @@ definePageMeta({
 <template>
 	<div>
 		<AdminHeader>
-			<h1>Dashboard</h1>
+			<h1>Users</h1>
+			<div class="controls">
+				<UiButton color="primary">New User</UiButton>
+			</div>
 		</AdminHeader>
 	</div>
 </template>

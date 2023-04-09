@@ -5,8 +5,8 @@
 
 html {
 	height: 100%;
-	background-color: #000000;
-	text-rendering: optimizeLegibility;
+	background-color: #000;
+	text-rendering: optimizelegibility;
 	text-size-adjust: 100%;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
@@ -47,7 +47,7 @@ pre {
 }
 
 a {
-	color: currentColor;
+	color: currentcolor;
 	cursor: pointer;
 	text-decoration: none;
 
@@ -108,13 +108,4 @@ table {
 	th {
 		@extend strong;
 	}
-}
-
-#__nuxt {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	overflow-x: scroll;
 }

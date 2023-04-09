@@ -1,13 +1,21 @@
 <template>
-	<header class="admin-page-header">
-		<slot />
+	<header class="admin-header">
+		<div class="admin-header__content">
+			<slot />
+		</div>
+
 		<hr />
 	</header>
 </template>
 
-<style scoped lang="scss">
-.admin-page-header {
+<style lang="scss">
+.admin-header {
 	margin-bottom: 1rem;
+
+	h1 {
+		font-size: 1.7rem;
+		font-weight: bold;
+	}
 
 	hr {
 		background-color: $black-lighter;
@@ -17,11 +25,9 @@
 		margin-top: 0.25rem;
 	}
 }
-</style>
 
-<style lang="scss">
-.admin-page h1 {
-	font-size: 1.7rem;
-	font-weight: bold;
+.admin-header__content {
+	display: flex;
+	justify-content: space-between;
 }
 </style>
