@@ -39,7 +39,6 @@ $border-radius: 0.4em;
 
 .panel {
 	width: 100%;
-	background-color: $black-light;
 
 	&.-color-primary {
 		.panel__header {
@@ -47,12 +46,12 @@ $border-radius: 0.4em;
 		}
 	}
 
-	&:first-child {
+	& > *:first-child {
 		border-top-left-radius: $border-radius;
 		border-top-right-radius: $border-radius;
 	}
 
-	&:last-child {
+	& > *:last-child {
 		border-bottom-left-radius: $border-radius;
 		border-bottom-right-radius: $border-radius;
 	}
@@ -70,6 +69,10 @@ $border-radius: 0.4em;
 	h1 {
 		font-weight: bold;
 	}
+}
+
+.panel__body {
+	background-color: $black-light;
 }
 
 .panel__footer {

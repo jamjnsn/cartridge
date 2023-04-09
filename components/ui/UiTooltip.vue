@@ -24,7 +24,7 @@ $tooltip-size: 5px;
 	display: inline-flex;
 
 	&:hover {
-		.ui-tooltip-content {
+		.tooltip__content {
 			opacity: 1;
 			transform: translateY(-100%) translateX(-50%) scale(1);
 		}

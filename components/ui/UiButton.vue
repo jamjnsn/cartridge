@@ -69,7 +69,6 @@ withDefaults(
 		transition: opacity 0.1s ease-in-out;
 	}
 
-	& > *:not(:last-child),
 	& > .icon {
 		margin-right: 0.25rem;
 	}
@@ -147,6 +146,10 @@ withDefaults(
 .button__content {
 	display: flex;
 	align-items: center;
+
+	& > *:not(:last-child) {
+		margin-right: 0.25rem;
+	}
 }
 
 .button__loading {
