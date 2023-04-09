@@ -35,15 +35,26 @@ withDefaults(
 </template>
 
 <style lang="scss">
+$border-radius: 0.4em;
+
 .ui-panel {
-	border-radius: 0.3rem;
-	overflow: hidden;
+	width: 100%;
 	background-color: $black-light;
 
 	&.is-color-primary {
 		.ui-panel-header {
 			background-color: $primary;
 		}
+	}
+
+	&:first-child {
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+	}
+
+	&:last-child {
+		border-bottom-left-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
 	}
 }
 

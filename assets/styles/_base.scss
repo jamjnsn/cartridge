@@ -47,12 +47,12 @@ pre {
 }
 
 a {
-	color: $link-color;
+	color: currentColor;
 	cursor: pointer;
 	text-decoration: none;
 
 	&:hover {
-		text-decoration: underline;
+		text-decoration: none;
 	}
 }
 
@@ -108,4 +108,13 @@ table {
 	th {
 		@extend strong;
 	}
+}
+
+#__nuxt {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow-x: scroll;
 }

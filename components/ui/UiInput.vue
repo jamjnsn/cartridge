@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const isFocused = ref(false)
+const currentValue = ref('')
 
 withDefaults(
 	defineProps<{
@@ -7,14 +8,21 @@ withDefaults(
 		icon?: UiIconName
 		name?: string
 		placeholder?: string
+		clearable?: boolean
 	}>(),
 	{
 		type: 'text',
 		icon: undefined,
 		name: '',
-		placeholder: ''
+		placeholder: '',
+		clearable: false
 	}
 )
+
+const updateInput = (event: Event) => {
+	const target = event.target as HTMLInputElement
+	currentValue.value = target.value
+}
 </script>
 
 <template>
@@ -35,29 +43,45 @@ withDefaults(
 			:name="name"
 			:type="type"
 			:placeholder="placeholder"
+			:value="currentValue"
+			@input="updateInput"
 			@focus="isFocused = true"
 			@blur="isFocused = false"
 		/>
+
+		<Transition>
+			<div
+				v-if="clearable && currentValue !== ''"
+				class="ui-input-clear"
+				@click="currentValue = ''"
+			>
+				<UiIcon type="x-circle" />
+			</div>
+		</Transition>
 	</div>
 </template>
 
 <style scoped lang="scss">
 input {
+	flex: 1 1 auto;
 	background: none;
 	display: block;
-	width: 100%;
 	color: currentColor;
 }
 
 .ui-input {
+	position: relative;
 	display: flex;
+	align-items: center;
+	width: 100%;
+
+	z-index: 1;
 
 	background-color: transparent;
 	border-radius: 0.25em;
 	color: darken($white-dark, 20%);
 
 	padding: calc(0.5em - 1px) calc(0.7em - 1px);
-	overflow: hidden;
 
 	outline: 1px solid $grey-dark;
 	transition: all 0.1s ease-in-out;
@@ -66,6 +90,14 @@ input {
 		outline: 1px solid $primary;
 		color: $white-dark;
 	}
+}
+
+.ui-input-clear {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 0.25em;
 }
 
 .ui-input-icon {
