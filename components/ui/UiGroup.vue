@@ -25,7 +25,7 @@ withDefaults(
 	&.-horizontal {
 		flex-direction: row;
 
-		&:not(:last-child) {
+		& > *:not(:last-child) {
 			margin-right: 0.5em;
 		}
 	}
@@ -33,7 +33,7 @@ withDefaults(
 	&.-vertical {
 		flex-direction: column;
 
-		&:not(:last-child) {
+		& > *:not(:last-child) {
 			margin-bottom: 0.5em;
 		}
 	}

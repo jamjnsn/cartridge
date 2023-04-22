@@ -1,23 +1,28 @@
 <script setup lang="ts">
 const isFocused = ref(false)
-const currentValue = ref('')
 
-withDefaults(
+const props = withDefaults(
 	defineProps<{
 		type?: 'text' | 'password' | 'email' | 'tel'
 		icon?: UiIconName
 		name?: string
 		placeholder?: string
 		clearable?: boolean
+		required?: boolean
+		value?: string
 	}>(),
 	{
 		type: 'text',
 		icon: undefined,
 		name: '',
 		placeholder: '',
-		clearable: false
+		clearable: false,
+		required: false,
+		value: ''
 	}
 )
+
+const currentValue = ref(props.value)
 
 const updateInput = (event: Event) => {
 	const target = event.target as HTMLInputElement
@@ -44,6 +49,7 @@ const updateInput = (event: Event) => {
 			:type="type"
 			:placeholder="placeholder"
 			:value="currentValue"
+			:required="required"
 			@input="updateInput"
 			@focus="isFocused = true"
 			@blur="isFocused = false"

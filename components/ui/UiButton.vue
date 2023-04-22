@@ -88,7 +88,7 @@ withDefaults(
 		}
 	}
 
-	&.size-small {
+	&.-size-small {
 		font-size: 0.8em;
 	}
 
