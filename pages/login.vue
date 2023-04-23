@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { User } from '@prisma/client'
+
 const isLoading = ref(false)
 
 const tryLogin = async (event: any) => {

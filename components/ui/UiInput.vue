@@ -1,32 +1,39 @@
 <script setup lang="ts">
 const isFocused = ref(false)
+const input = ref<HTMLInputElement>()
+
+const emit = defineEmits<{
+	(event: 'update:modelValue', payload: string): void
+}>()
 
 const props = withDefaults(
 	defineProps<{
+		modelValue?: string
 		type?: 'text' | 'password' | 'email' | 'tel'
 		icon?: UiIconName
 		name?: string
 		placeholder?: string
 		clearable?: boolean
 		required?: boolean
-		value?: string
 	}>(),
 	{
+		modelValue: '',
 		type: 'text',
 		icon: undefined,
 		name: '',
 		placeholder: '',
 		clearable: false,
-		required: false,
-		value: ''
+		required: false
 	}
 )
 
-const currentValue = ref(props.value)
-
 const updateInput = (event: Event) => {
-	const target = event.target as HTMLInputElement
-	currentValue.value = target.value
+	emit('update:modelValue', (event.target as HTMLInputElement).value)
+}
+
+const clearInput = () => {
+	emit('update:modelValue', '')
+	input.value?.focus()
 }
 </script>
 
@@ -45,10 +52,11 @@ const updateInput = (event: Event) => {
 		</div>
 
 		<input
+			ref="input"
 			:name="name"
 			:type="type"
 			:placeholder="placeholder"
-			:value="currentValue"
+			:value="modelValue"
 			:required="required"
 			@input="updateInput"
 			@focus="isFocused = true"
@@ -57,9 +65,9 @@ const updateInput = (event: Event) => {
 
 		<Transition>
 			<div
-				v-if="clearable && currentValue !== ''"
+				v-if="clearable && modelValue !== ''"
 				class="input__clear"
-				@click="currentValue = ''"
+				@click="clearInput"
 			>
 				<UiIcon type="x-circle" />
 			</div>

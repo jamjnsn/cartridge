@@ -27,6 +27,7 @@
 }
 
 .admin-header__content {
+	align-items: center;
 	display: flex;
 	justify-content: space-between;
 }
