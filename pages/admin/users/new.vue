@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { SlowBuffer } from 'buffer'
-
 definePageMeta({
 	layout: 'admin'
 })
