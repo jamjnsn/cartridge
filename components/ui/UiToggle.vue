@@ -16,7 +16,7 @@ const toggle = (event: any) => {
 
 <template>
 	<label
-		class="toggle-container"
+		class="toggle"
 		:class="{ 'is-disabled': disabled }"
 	>
 		<input
@@ -25,7 +25,11 @@ const toggle = (event: any) => {
 			:disabled="disabled"
 			@click="toggle"
 		/>
-		<div class="toggle"></div>
+		<div class="toggle__handle"></div>
+
+		<div class="toggle__label">
+			<slot />
+		</div>
 	</label>
 </template>
 
@@ -33,11 +37,11 @@ const toggle = (event: any) => {
 $handle-width: 15px;
 $padding: 5px;
 
-.toggle-container {
+.toggle {
 	position: relative;
-	display: inline-block;
-	width: calc($handle-width * 2 + $padding * 2);
-	height: calc($handle-width + $padding * 2);
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
 
 	input {
 		display: none;
@@ -58,18 +62,16 @@ $padding: 5px;
 	}
 }
 
-.toggle {
-	position: absolute;
-	cursor: pointer;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+.toggle__handle {
+	width: calc($handle-width * 2 + $padding * 2);
+	height: calc($handle-width + $padding * 2);
 	background-color: $grey;
 	transition: 0.2s;
+	border-radius: $handle-width;
+	margin-right: 0.5em;
 }
 
-.toggle:before {
+.toggle__handle:before {
 	position: absolute;
 	content: '';
 	height: $handle-width;
@@ -78,21 +80,14 @@ $padding: 5px;
 	bottom: $padding;
 	background-color: $white;
 	transition: 0.2s;
+	border-radius: 50%;
 }
 
-input:checked + .toggle {
+input:checked + .toggle__handle {
 	background-color: $primary;
 }
 
-input:checked + .toggle:before {
+input:checked + .toggle__handle:before {
 	transform: translateX($handle-width);
-}
-
-.toggle {
-	border-radius: $handle-width;
-}
-
-.toggle:before {
-	border-radius: 50%;
 }
 </style>
