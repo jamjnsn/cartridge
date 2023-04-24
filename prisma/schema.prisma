@@ -31,3 +31,26 @@ model Session {
 
     @@map("sessions")
 }
+
+model Platform {
+    id   Int    @id
+    name String
+    slug String @unique
+
+    data Json
+
+    collections Collection[]
+
+    @@map("platforms")
+}
+
+model Collection {
+    id String @id @default(cuid())
+
+    path String @unique
+
+    platformId Int      @map("platform_id")
+    platform   Platform @relation(fields: [platformId], references: [id])
+
+    @@map("collections")
+}
